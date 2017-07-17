@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Widget Image</title>
+    <link href="../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
 </head>
 <body>
+    <div class="running-head">
+        Widget Edit
+        <a class="btn-link header-button pull-left" href="widget-list.html" role="button">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="container-fluid">
 
+
+        <label for="name">Name</label>
+        <input name="name"
+               id="name"
+               placeholder="Image name"
+               class="form-control"/>
+
+        <label for="text">Text</label>
+        <input name="text"
+               id="text"
+               placeholder="Text to display below image"
+               class="form-control"/>
+
+        <label for="url">URL</label>
+        <input name="url"
+               id="url"
+               type="url"
+               placeholder="URL of your image"
+               class="form-control"/>
+
+        <label for="width">Width</label>
+        <input name="width"
+               id="width"
+               placeholder="100%"
+               class="form-control"/>
+
+        <label for="upload">Upload</label>
+        <input name="upload"
+               id="upload"
+               type="file"
+
+               class="form-control"/>
+
+        <a class="btn btn-default btn-primary btn-block" href="widget-list.html" role="button">Upload Image</a>
+        <a class="btn btn-default btn-danger btn-block" href="widget-list.html" role="button">Delete</a>
+    </div>
+    <div class="running-foot">
+        <a class="btn-link footer-button pull-right" href="profile.html" role="button">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        </a>
+    </div>
 </body>
 </html>

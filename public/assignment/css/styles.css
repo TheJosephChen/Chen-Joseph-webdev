@@ -8,6 +8,14 @@ input, textarea {
     text-decoration: none;
 }
 
+.container-fluid.scroll {
+    width: 100%;
+    position: absolute;
+    top: 65px;
+    bottom: 65px;
+    overflow-y: scroll;
+}
+
 .running-head {
     display: block;
     color: white;
@@ -64,4 +72,9 @@ input, textarea {
         bottom: 65px;
         overflow-y: scroll;
     }
+}
+
+li.borderless {
+    border: none;
+    font-size: large;
 }
