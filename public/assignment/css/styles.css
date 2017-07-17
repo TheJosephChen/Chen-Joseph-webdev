@@ -4,9 +4,10 @@ input, textarea {
     margin-bottom: 5px;
 }
 
-a, a:hover {
+.no-underline a:hover{
     text-decoration: none;
 }
+
 .running-head {
     display: block;
     color: white;
@@ -15,7 +16,8 @@ a, a:hover {
     margin-bottom: 10px;
     padding: 15px 15px 15px 15px;
     font-size: 20px;
-    width: 100%}
+    width: 100%
+}
 
 .header-button {
     border: none;
@@ -23,6 +25,7 @@ a, a:hover {
     color: white;
     padding-right: 10px;
 }
+
 
 .running-foot {
     color: white;
@@ -42,6 +45,24 @@ a, a:hover {
     border: none;
     background-color: #337ab7;
     color: white;
+}
+
+.gray {
+    background-color: lightgray;
+    color: dimgray;
+}
+
+.btn-link.gray {
+    background-color: lightgray;
+    color: black;
+}
+
+.btn-link.gray a:hover{
+    color: white;
+}
+
+.active-gray {
+    background-color: lightgray;
 }
 
 .col-xs-3.jga-split-left {
