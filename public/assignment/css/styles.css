@@ -47,24 +47,6 @@ input, textarea {
     color: white;
 }
 
-.gray {
-    background-color: lightgray;
-    color: dimgray;
-}
-
-.btn-link.gray {
-    background-color: lightgray;
-    color: black;
-}
-
-.btn-link.gray a:hover{
-    color: white;
-}
-
-.active-gray {
-    background-color: lightgray;
-}
-
 .col-xs-3.jga-split-left {
     position: absolute;
     z-index: 1;
