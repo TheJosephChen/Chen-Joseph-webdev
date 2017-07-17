@@ -78,3 +78,8 @@ li.borderless {
     border: none;
     font-size: large;
 }
+
+.widget-edit {
+    padding-left: 5px;
+    z-index: 1;
+}
