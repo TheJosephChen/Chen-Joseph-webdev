@@ -4,6 +4,26 @@ input, textarea {
     margin-bottom: 5px;
 }
 
+.centerpiece {
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+h1.centerpiece {
+    padding-top: 50px;
+    width: 150px;
+}
+
+
+p.centerpiece {
+    width: 180px;
+}
+
+.hanging-center {
+    width: 150px;
+    margin: auto;
+}
+
 .no-underline a:hover{
     text-decoration: none;
 }
@@ -16,6 +36,14 @@ input, textarea {
     overflow-y: scroll;
 }
 
+.container-fluid.scroll-no-foot {
+    bottom: 35px;
+}
+
+.container-fluid.scroll-no-head {
+    top: 35px;
+}
+
 .running-head {
     display: block;
     color: white;
@@ -24,7 +52,7 @@ input, textarea {
     margin-bottom: 10px;
     padding: 15px 15px 15px 15px;
     font-size: 20px;
-    width: 100%
+    width: 100%;
 }
 
 .header-button {
@@ -72,6 +100,15 @@ input, textarea {
         bottom: 65px;
         overflow-y: scroll;
     }
+}
+
+.col-xs-12 {
+    width: 100%;
+    position: absolute;
+    right: 0px;
+    top: 65px;
+    bottom: 65px;
+    overflow-y: scroll;
 }
 
 li.borderless {

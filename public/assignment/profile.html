@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Profile</title>
     <link href="../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
@@ -10,7 +11,7 @@
     <div class="running-head">
         Profile
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid scroll scroll-no-foot">
 
 
         <label for="username">Username</label>
@@ -19,19 +20,29 @@
                placeholder="username"
                class="form-control"/>
 
-        <label for="password">Password</label>
-        <input name="password"
-               id="password"
-               placeholder="password"
+        <label for="firstname">First Name</label>
+        <input name="firstname"
+               id="firstname"
+               placeholder="firstname"
+               class="form-control"/>
+
+        <label for="lastname">Last Name</label>
+        <input name="lastname"
+               id="lastname"
+               placeholder="lastname"
+               class="form-control"/>
+
+        <label for="email">Email</label>
+        <input name="email"
+               type="email"
+               id="email"
+               placeholder="email@email.com"
                class="form-control"/>
 
         <a class="btn btn-default btn-primary btn-block" href="website-list.html" role="button">Websites</a>
         <a class="btn btn-default btn-danger btn-block" href="login.html" role="button">Logout</a>
     </div>
     <div class="running-foot">
-        <a class="btn-link footer-button pull-right" href="profile.html" role="button">
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-        </a>
     </div>
 </body>
 </html>
