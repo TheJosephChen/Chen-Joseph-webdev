@@ -36,6 +36,14 @@ p.centerpiece {
     overflow-y: scroll;
 }
 
+.container-fluid.scroll-no-foot {
+    bottom: 35px;
+}
+
+.container-fluid.scroll-no-head {
+    top: 35px;
+}
+
 .running-head {
     display: block;
     color: white;
@@ -92,6 +100,15 @@ p.centerpiece {
         bottom: 65px;
         overflow-y: scroll;
     }
+}
+
+.col-xs-12 {
+    width: 100%;
+    position: absolute;
+    right: 0px;
+    top: 65px;
+    bottom: 65px;
+    overflow-y: scroll;
 }
 
 li.borderless {
