@@ -6,6 +6,9 @@
             Welcome {{welcomeUser.username}}
         </div>
 
+        <div ng-show="errorMessage" class="alert alert-danger">
+            {{errorMessage}}
+        </div>
 
         <h1 class="entrance">Login</h1>
 
@@ -25,6 +28,6 @@
                class="form-control"/>
 
         <a class="btn btn-default btn-primary btn-block" ng-click="login(user)" role="button">Login</a>
-        <a class="btn btn-default btn-success btn-block" href="register.html" role="button">Register</a>
+        <a class="btn btn-default btn-success btn-block" href="#!/register" role="button">Register</a>
     </div>
 </div>
