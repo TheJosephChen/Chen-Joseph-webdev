@@ -6,7 +6,15 @@
 
     function loginController($scope, $location, userService) {
 
-        $scope.login = function (user) {
+        $scope.login = login;
+
+        function init() {
+
+        };
+
+        init();
+
+        function login(user) {
             var user = userService.findUserByUsernameAndPassword(user.username, user.password);
             if (user === null) {
                 $scope.errorMessage = "User not found";
