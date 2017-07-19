@@ -1,32 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Login</title>
-    <link href="../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
-</head>
-<body>
-    <div class="container-fluid">
+<div class="container-fluid">
+
+    <div ng-controller="loginController">
+
+        <div ng-show="welcomeUser" class="alert alert-info">
+            Welcome {{welcomeUser.username}}
+        </div>
+
 
         <h1 class="entrance">Login</h1>
 
         <label for="username">Username</label>
         <input name="username"
+               ng-model="user.username"
                id="username"
                placeholder="username"
                class="form-control"/>
 
         <label for="password">Password</label>
         <input name="password"
+               ng-model="user.password"
                type="password"
                id="password"
                placeholder="password"
                class="form-control"/>
 
-        <a class="btn btn-default btn-primary btn-block" href="profile.html" role="button">Login</a>
+        <a class="btn btn-default btn-primary btn-block" ng-click="login(user)" role="button">Login</a>
         <a class="btn btn-default btn-success btn-block" href="register.html" role="button">Register</a>
     </div>
-</body>
-</html>
+</div>
