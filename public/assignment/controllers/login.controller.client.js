@@ -4,9 +4,10 @@
         .controller("loginController", loginController);
 
 
-    function loginController($scope, $location, userService) {
+    function loginController($location, userService) {
+        var model = this;
 
-        $scope.login = login;
+        model.login = login;
 
         function init() {
 
@@ -17,7 +18,7 @@
         function login(user) {
             var user = userService.findUserByUsernameAndPassword(user.username, user.password);
             if (user === null) {
-                $scope.errorMessage = "User not found";
+                model.errorMessage = "User not found";
             } else {
                 $location.url("/profile/" + user._id);
             }

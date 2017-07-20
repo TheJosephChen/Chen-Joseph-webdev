@@ -3,14 +3,15 @@
         .module("WamApp")
         .controller("profileController", profileController);
 
-    function profileController($scope, $routeParams, userService) {
+    function profileController($routeParams, userService) {
+        var model = this;
         var userId = $routeParams["userId"];
 
-        $scope.updateUser = updateUser;
-        $scope.unregisterUser = unregisterUser;
+        model.updateUser = updateUser;
+        model.unregisterUser = unregisterUser;
 
         function init() {
-            $scope.user = userService.findUserByID(userId);
+            model.user = userService.findUserByID(userId);
 
         };
         init();
