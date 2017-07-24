@@ -14,8 +14,13 @@
         init();
 
         function registerUser(user) {
-            var user = userService.registerUser(user);
-            $location.url("/profile/" + user._id);
+            var _user = userService.findUserByUsername(user.username);
+            if (!_user) {
+                var user = userService.registerUser(user);
+                $location.url("/profile/" + user._id);
+            } else {
+                model.error = "Use Already exists";
+            }
         }
 
     }
