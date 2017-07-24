@@ -33,14 +33,13 @@
             // page routes
             .when("/user/:userId/website/:websiteId/page", {
                 templateUrl: "views/page/templates/page-list.view.client.html",
-				controller: "pageListController",
-				controllerAs: "model"})
-			// widget routes
-			.when("/user/:userId/website/:websiteId/page/:pageId/widget", {
-				templateUrl: "views/widget/templates/widget-list.view.client.html",
-				controller: "widgetListController",
-				controllerAs: "model"})
-
+                controller: "pageListController",
+	            controllerAs: "model"})
+            // widget routes
+	        .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
+                templateUrl: "views/widget/templates/widget-list.view.client.html",
+                controller: "widgetListController",
+                controllerAs: "model"})
 
     }
 })();
