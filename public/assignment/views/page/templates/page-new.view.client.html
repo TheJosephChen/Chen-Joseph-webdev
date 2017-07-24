@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Edit Website</title>
-    <link href="../../../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../css/styles.css" rel="stylesheet"/>
+    <title>New Page</title>
+    <link href="../../../../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../../css/styles.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="running-head">
-        Edit Page
-        <a class="btn-link header-button pull-left" href="../../website/templates/website-list.view.client.html" role="button">
+        New Page
+        <a class="btn-link header-button pull-left" href="page-list.view.client.html" role="button">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </a>
     </div>
@@ -169,32 +169,23 @@
                             </div>
                         </div>
                     </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10">Name</div>
-                            <div class="col-xs-2">
-                                <a class="btn-link pull-right" href="page-edit.view.client.html" role="button">
-                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
                 </ul>
             </div>
             <div class="col-lg-9 col-xs-12 jga-split-right">
                 <label for="name">Page Name</label>
                 <input name="name"
                        id="name"
-                       value="The original name"
+                       placeholder="facebook"
                        class="form-control">
 
                 <label for="description">Page Description</label>
                 <textarea name="description"
                           id="description"
                           rows="5"
-                          class="form-control">The original description text</textarea>
+                          placeholder="A page description"
+                          class="form-control"></textarea>
 
-                <a class="btn btn-default btn-primary btn-block" href="page-list.view.client.html" role="button">Edit</a>
+                <a class="btn btn-default btn-primary btn-block" href="page-list.view.client.html" role="button">Create</a>
                 <a class="btn btn-default btn-danger btn-block" href="page-list.view.client.html" role="button">Cancel</a>
             </div>
         </div>

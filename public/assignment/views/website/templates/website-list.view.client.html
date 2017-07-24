@@ -21,7 +21,7 @@
         <li ng-repeat="website in model.websites" class="list-group-item">
             <div class="row">
                 <div class="col-xs-4 no-underline">
-                    <a class="btn-link" href="#!/user/{{model.userId}}/page" role="button">
+                    <a class="btn-link" href="#!/user/{{model.userId}}/website/{{website._id}}/page" role="button">
                         {{website.name}}
                     </a>
                 </div>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Widget Youtube</title>
-    <link href="../../../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../css/styles.css" rel="stylesheet"/>
+    <title>Widget Edit</title>
+    <link href="../../../../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../../css/styles.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="running-head">
@@ -20,26 +20,21 @@
         <label for="name">Name</label>
         <input name="name"
                id="name"
-               placeholder="Video name"
+               placeholder="Widget name"
                class="form-control"/>
 
         <label for="text">Text</label>
         <input name="text"
+               type="text"
                id="text"
-               placeholder="Text to display below video"
+               placeholder="Text to display"
                class="form-control"/>
 
-        <label for="url">URL</label>
-        <input name="url"
-               id="url"
-               type="url"
-               placeholder="URL of your video"
-               class="form-control"/>
-
-        <label for="width">Width</label>
-        <input name="width"
-               id="width"
-               placeholder="100%"
+        <label for="size">Size</label>
+        <input name="size"
+               id="size"
+               type="number"
+               placeholder="3"
                class="form-control"/>
 
         <a class="btn btn-default btn-primary btn-block" href="widget-list.view.client.html" role="button">Ok</a>
