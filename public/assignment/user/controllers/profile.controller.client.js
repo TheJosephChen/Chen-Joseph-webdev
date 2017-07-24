@@ -3,7 +3,7 @@
         .module("WamApp")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, userService) {
+    function profileController($routeParams, $location, userService) {
         var model = this;
         var userId = $routeParams["userId"];
 
@@ -20,8 +20,9 @@
             userService.updateUser(user._id, user);
         };
 
-        function unregisterUser() {
-
+        function unregisterUser(userId) {
+            userService.deleteUser(userId);
+            $location.url("/login");
         };
     }
 })();

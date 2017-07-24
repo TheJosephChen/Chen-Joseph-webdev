@@ -17,7 +17,8 @@
             "findUserByUsername": findUserByUsername,
             "findUserByID": findUserByID,
             "registerUser": registerUser,
-            "updateUser": updateUser
+            "updateUser": updateUser,
+            "deleteUser": deleteUser
         };
         return api;
 
@@ -56,7 +57,7 @@
             return null;
         }
 
-        function updateUser(userID, user) {
+        function updateUser(userId, user) {
             for (var u in users) {
                 if (users[u]._id === userId) {
                     users[u] = user;
@@ -66,5 +67,16 @@
             return null;
         }
 
+        function deleteUser(userId) {
+            var userIndex;
+            for (var u in users) {
+                if (users[u]._id === userId) {
+                    userIndex = u;
+                    users.splice(userIndex, 1);
+                    return userId;
+                }
+            }
+            return null;
+        }
     }
 })();
