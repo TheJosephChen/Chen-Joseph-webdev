@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Widget Youtube</title>
+    <title>Widget Edit</title>
     <link href="../../../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../../css/styles.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="running-head">
         Widget Edit
-        <a class="btn-link header-button pull-left" href="widget-list.html" role="button">
+        <a class="btn-link header-button pull-left" href="widget-list.view.client.html" role="button">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </a>
     </div>
@@ -20,33 +20,28 @@
         <label for="name">Name</label>
         <input name="name"
                id="name"
-               placeholder="Video name"
+               placeholder="Widget name"
                class="form-control"/>
 
         <label for="text">Text</label>
         <input name="text"
+               type="text"
                id="text"
-               placeholder="Text to display below video"
+               placeholder="Text to display"
                class="form-control"/>
 
-        <label for="url">URL</label>
-        <input name="url"
-               id="url"
-               type="url"
-               placeholder="URL of your video"
+        <label for="size">Size</label>
+        <input name="size"
+               id="size"
+               type="number"
+               placeholder="3"
                class="form-control"/>
 
-        <label for="width">Width</label>
-        <input name="width"
-               id="width"
-               placeholder="100%"
-               class="form-control"/>
-
-        <a class="btn btn-default btn-primary btn-block" href="widget-list.html" role="button">Ok</a>
-        <a class="btn btn-default btn-danger btn-block" href="widget-list.html" role="button">Delete</a>
+        <a class="btn btn-default btn-primary btn-block" href="widget-list.view.client.html" role="button">Ok</a>
+        <a class="btn btn-default btn-danger btn-block" href="widget-list.view.client.html" role="button">Delete</a>
     </div>
     <div class="running-foot">
-        <a class="btn-link footer-button pull-right" href="../templates/profile.view.client.html" role="button">
+        <a class="btn-link footer-button pull-right" href="../../user/templates/profile.view.client.html" role="button">
             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
         </a>
     </div>

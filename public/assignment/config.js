@@ -26,5 +26,7 @@
                 templateUrl: "website/templates/website-new.view.client.html",
                 controller: "websiteNewController",
                 controllerAs: "model"})
+            .when("/user/:userId/page", {
+                templateUrl: "page/templates/page-list.view.client.html"})
     }
 })();
