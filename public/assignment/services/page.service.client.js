@@ -12,7 +12,7 @@
         ];
 
         this.createPage = createPage;
-        this.findPageByWebsiteId = findPageByWebsiteId;
+        this.findPagesByWebsiteId = findPagesByWebsiteId;
         this.findPageById = findPageById;
         this.updatePage = updatePage;
         this.deletePage = deletePage;
@@ -24,14 +24,14 @@
             return page;
         }
 
-        function findPageByWebsiteId(websiteId) {
+        function findPagesByWebsiteId(websiteId) {
+            var _pages = [];
             for (var p in pages) {
-                var page = pages[p];
-                if (page.websiteId === websiteId) {
-                    return page;
+                if (pages[p].websiteId === websiteId) {
+                    _pages.push(pages[p]);
                 }
             }
-            return null;
+            return _pages;
         }
 
         function findPageById(pageId) {

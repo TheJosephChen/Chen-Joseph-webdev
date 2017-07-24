@@ -31,13 +31,13 @@
         }
 
         function findWidgetsByPageId(pageId) {
-            var widgets = [];
+            var _widgets = [];
             for (var w in widgets) {
                 if (widgets[w].pageId === pageId) {
-                    widgets.push(widgets[w]);
+                    _widgets.push(widgets[w]);
                 }
             }
-            return widgets;
+            return _widgets;
         }
 
         function findWidgetById(widgetId) {
