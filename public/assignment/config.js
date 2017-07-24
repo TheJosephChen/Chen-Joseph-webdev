@@ -26,6 +26,10 @@
                 templateUrl: "website/templates/website-new.view.client.html",
                 controller: "newWebsiteController",
                 controllerAs: "model"})
+            .when("/user/:userId/website/:websiteId/edit", {
+                templateUrl: "website/templates/website-edit.view.client.html",
+                controller: "editWebsiteController",
+                controllerAs: "model"})
             .when("/user/:userId/page", {
                 templateUrl: "page/templates/page-list.view.client.html"})
     }
