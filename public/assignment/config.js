@@ -24,7 +24,7 @@
                 controllerAs: "model"})
             .when("/user/:userId/website/new", {
                 templateUrl: "website/templates/website-new.view.client.html",
-                controller: "websiteNewController",
+                controller: "newWebsiteController",
                 controllerAs: "model"})
             .when("/user/:userId/page", {
                 templateUrl: "page/templates/page-list.view.client.html"})
