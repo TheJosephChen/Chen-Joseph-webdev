@@ -3,7 +3,7 @@
     <a class="btn-link header-button pull-left" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" role="button">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     </a>
-    <a class="btn-link header-button pull-right" href="widget-choose.view.client.html" role="button">
+    <a class="btn-link header-button pull-right" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new" role="button">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     </a>
 </div>
@@ -12,7 +12,7 @@
         <div ng-switch="widget.widgetType">
             <div ng-switch-when="HEADING" ng-switch="widget.size">
 
-                <a class="btn-link widget-edit pull-right" href="widget-youtube.view.client.html" role="button">
+                <a class="btn-link widget-edit pull-right" ng-click="model.editWidget(widget._id)" role="button">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 </a>
                 <h1 ng-switch-when="1">{{widget.text}}</h1>
@@ -23,14 +23,14 @@
                 <h6 ng-switch-when="6">{{widget.text}}</h6>
             </div>
             <div ng-switch-when="IMAGE">
-                <a class="btn-link widget-edit pull-right" href="widget-youtube.view.client.html" role="button">
+                <a class="btn-link widget-edit pull-right" ng-click="model.editWidget(widget._id)" role="button">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 </a>
                 <img ng-src="{{widget.url}}" width="{{widget.width}}">
             </div>
             <div ng-switch-when="YOUTUBE">
 
-                <a class="btn-link widget-edit pull-right" href="widget-youtube.view.client.html" role="button">
+                <a class="btn-link widget-edit pull-right" ng-click="model.editWidget(widget._id)" role="button">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 </a>
                 <iframe width="{{widget.width}}" height="315" src="{{model.getYouTubeEmbedUrl(widget.url)}}" frameborder="0" allowfullscreen></iframe>
@@ -38,7 +38,7 @@
 
             <div ng-switch-when="HTML">
 
-                <a class="btn-link widget-edit pull-right" href="widget-youtube.view.client.html" role="button">
+                <a class="btn-link widget-edit pull-right" ng-click="model.editWidget(widget._id)" role="button">
                     <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                 </a>
                 <div ng-bind-html="model.trustThisHTMLContent(widget.text)"></div>

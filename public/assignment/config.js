@@ -48,6 +48,15 @@
                 templateUrl: "views/widget/templates/widget-list.view.client.html",
                 controller: "widgetListController",
                 controllerAs: "model"})
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/new", {
+                templateUrl: "views/widget/templates/widget-choose.view.client.html",
+                controller: "newWidgetController",
+                controllerAs: "model"})
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId/edit", {
+                templateUrl: "views/widget/templates/widget-edit.view.client.html",
+                controller: "editWidgetController",
+                controllerAs: "model"})
+
 
     }
 })();

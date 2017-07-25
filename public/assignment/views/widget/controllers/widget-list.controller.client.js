@@ -3,18 +3,25 @@
         .module("WamApp")
         .controller("widgetListController", widgetListController);
 
-    function widgetListController($routeParams, widgetService, $sce) {
+    function widgetListController($routeParams, widgetService, $sce, $location) {
         var model = this;
 
         model.userId = $routeParams.userId;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
+
+        model.editWidget = editWidget;
         model.trustThisHTMLContent = trustThisHTMLContent;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
+
         function init() {
             model.widgets = widgetService.findWidgetsByPageId(model.pageId);
         }
         init();
+
+        function editWidget(widgetId) {
+            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + widgetId + "/edit");
+        }
 
         function trustThisHTMLContent(html) {
             return $sce.trustAsHtml(html);

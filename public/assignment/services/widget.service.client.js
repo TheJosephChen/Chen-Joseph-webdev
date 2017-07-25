@@ -25,7 +25,7 @@
 
         function createWidget(pageId, widget) {
             widget._id = (new Date()).getTime() + "";
-            widget.pageId = widgetId;
+            widget.pageId = pageId;
             widgets.push(widget);
             return widget;
         }
@@ -64,7 +64,7 @@
             var widgetIndex;
             for (var w in widgets) {
                 if (widgets[w]._id === widgetId) {
-                    widgetIndex = p;
+                    widgetIndex = w;
                     widgets.splice(widgetIndex, 1);
                     return widgetId;
                 }

@@ -1,0 +1,24 @@
+<div class="running-head">
+    Widgets
+    <a class="btn-link header-button pull-left" ng-click="model.unCreate()" role="button">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    </a>
+</div>
+<div ng-switch="model.widget.widgetType">
+    <div ng-switch-when="HEADING">
+        <ng-include src="'views/widget/templates/editors/widget-heading.view.client.html'">
+    </div>
+    <div ng-switch-when="IMAGE">
+        <ng-include src="'views/widget/templates/editors/widget-image.view.client.html'">
+    </div>
+    <div ng-switch-when="YOUTUBE">
+        <ng-include src="'views/widget/templates/editors/widget-youtube.view.client.html'">
+    </div>
+</div>
+
+
+<div class="running-foot">
+    <a class="btn-link footer-button pull-right" ng-click="model.unCreate('profile')" role="button">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+    </a>
+</div>
