@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Profile</title>
-    <link href="../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
-</head>
-<body>
+<div>
     <div class="running-head">
         Profile
     </div>
@@ -16,18 +7,21 @@
 
         <label for="username">Username</label>
         <input name="username"
+               ng-model="model.user.username"
                id="username"
                placeholder="username"
                class="form-control"/>
 
         <label for="firstname">First Name</label>
         <input name="firstname"
+               ng-model="model.user.firstName"
                id="firstname"
                placeholder="firstname"
                class="form-control"/>
 
         <label for="lastname">Last Name</label>
         <input name="lastname"
+               ng-model="model.user.lastName"
                id="lastname"
                placeholder="lastname"
                class="form-control"/>
@@ -39,10 +33,10 @@
                placeholder="email@email.com"
                class="form-control"/>
 
-        <a class="btn btn-default btn-primary btn-block" href="website-list.html" role="button">Websites</a>
-        <a class="btn btn-default btn-danger btn-block" href="login.html" role="button">Logout</a>
+        <a class="btn btn-default btn-primary btn-block" href="#!/user/{{model.user._id}}/website" role="button">Websites</a>
+        <a class="btn btn-default btn-primary btn-block" ng-click="model.updateUser(model.user)" role="button">Update</a>
+        <a class="btn btn-default btn-primary btn-block" ng-click="model.unregisterUser(model.user._id)" role="button">Unregister</a>
+        <a class="btn btn-default btn-danger btn-block" href="#!/login" role="button">Logout</a>
     </div>
-    <div class="running-foot">
-    </div>
-</body>
-</html>
+    <div class="running-foot"></div>
+</div>

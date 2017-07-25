@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Register</title>
-    <link href="../vendor/css/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/styles.css" rel="stylesheet"/>
-</head>
-<body>
 <div class="container-fluid">
 
+    <div ng-show="model.error" class="alert alert-danger">
+        {{model.error}}
+    </div>
     <h1 class="entrance">Register</h1>
 
     <label for="username">Username</label>
     <input name="username"
+           ng-model="user.username"
            id="username"
            placeholder="username"
            class="form-control"/>
 
     <label for="password">Password</label>
     <input name="password"
+           ng-model="user.password"
            type="password"
            id="password"
            placeholder="password"
@@ -27,12 +22,11 @@
 
     <label for="verifyPassword">Verify Password</label>
     <input name="verifyPassword"
+           ng-model="user.password2"
            type="password"
            id="verifyPassword"
            placeholder="verify password"
            class="form-control"/>
-    <a class="btn btn-default btn-primary btn-block" href="profile.html" role="button">Register</a>
-    <a class="btn btn-default btn-danger btn-block" href="login.html" role="button">Cancel</a>
+    <a class="btn btn-default btn-primary btn-block" ng-click="model.registerUser(user)" role="button">Register</a>
+    <a class="btn btn-default btn-danger btn-block" href="#!/login" role="button">Cancel</a>
 </div>
-</body>
-</html>
