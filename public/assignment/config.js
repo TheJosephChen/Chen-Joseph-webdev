@@ -5,6 +5,12 @@
 
     function configuration($routeProvider) {
         $routeProvider
+            // temporary default route
+            .when("/", {
+                templateUrl: "views/user/templates/login.view.client.html",
+                controller: "loginController",
+                controllerAs: "model"})
+            // user routes
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
                 controller: "loginController",
