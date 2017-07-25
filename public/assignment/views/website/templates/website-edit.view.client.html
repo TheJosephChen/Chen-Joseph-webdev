@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </li>
-                <li ng-repeat="website in model.websites" class="list-group-item">
+                <li ng-repeat="website in model.origWebsites" class="list-group-item">
                     <div class="row">
                         <div class="col-xs-10">{{website.name}}</div>
                         <div class="col-xs-2">
@@ -35,9 +35,9 @@
             <label for="name">Website Name</label>
             <input name="name"
                    ng-model="model.website.name"
-                      id="name"
-                      value="The original name"
-                      class="form-control">
+                   id="name"
+                   value="The original name"
+                   class="form-control">
 
             <label for="description">Website Description</label>
             <textarea name="description"
@@ -48,7 +48,7 @@
 
             <a class="btn btn-default btn-primary btn-block" ng-click="model.updateWebsite(model.website)" role="button">Edit</a>
             <a class="btn btn-default btn-danger btn-block" ng-click="model.deleteWebsite(model.websiteId)" role="button">Delete</a>
-            <a class="btn btn-default btn-danger btn-block" href="#!/user/{{model.userId}}/website" role="button">Cancel</a>
+            <a class="btn btn-default btn-danger btn-block" ng-click="model.cancelEdit()" role="button">Cancel</a>
         </div>
     </div>
 
