@@ -15,7 +15,7 @@
             model.websites = angular.copy(websiteService.findWebsitesByUser(model.userId));
             model.website = angular.copy(websiteService.findWebsiteById(model.websiteId));
             model.origWebsite = angular.copy(model.website);
-            model.origWebsites = angular.copy(model.websites)
+            model.origWebsites = angular.copy(model.websites);
         }
         init();
 

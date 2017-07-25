@@ -35,6 +35,14 @@
                 templateUrl: "views/page/templates/page-list.view.client.html",
                 controller: "pageListController",
 	            controllerAs: "model"})
+            .when("/user/:userId/website/:websiteId/page/new", {
+                templateUrl: "views/page/templates/page-new.view.client.html",
+                controller: "newPageController",
+                controllerAs: "model"})
+            .when("/user/:userId/website/:websiteId/page/:pageId/edit", {
+                templateUrl: "views/page/templates/page-edit.view.client.html",
+                controller: "editPageController",
+                controllerAs: "model"})
             // widget routes
 	        .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
                 templateUrl: "views/widget/templates/widget-list.view.client.html",
