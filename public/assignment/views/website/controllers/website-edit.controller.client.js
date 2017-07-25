@@ -10,7 +10,6 @@
         model.websiteId = $routeParams.websiteId;
         model.updateWebsite = updateWebsite;
         model.deleteWebsite = deleteWebsite;
-        model.cancelEdit = cancelEdit;
 
         function init() {
             model.websites = angular.copy(websiteService.findWebsitesByUser(model.userId));
@@ -29,12 +28,6 @@
 
         function deleteWebsite(websiteId) {
             websiteService.deleteWebsite(websiteId);
-            $location.url("/user/" + model.userId + "/website");
-        }
-
-        function cancelEdit() {
-            model.website = angular.copy(model.origWebsite);
-            model.websites = angular.copy(model.origWebsites);
             $location.url("/user/" + model.userId + "/website");
         }
     }

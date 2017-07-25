@@ -11,12 +11,14 @@
         model.unregisterUser = unregisterUser;
 
         function init() {
-            model.user = userService.findUserByID(userId);
+            model.user = angular.copy(userService.findUserByID(userId));
+            model.origUser = angular.copy(model.user);
         };
         init();
 
         function updateUser(user) {
             userService.updateUser(user._id, user);
+            angular.copy(model.user, model.origUser);
         };
 
         function unregisterUser(userId) {
