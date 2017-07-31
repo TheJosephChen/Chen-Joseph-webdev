@@ -12,18 +12,26 @@
         model.deleteWebsite = deleteWebsite;
 
         function init() {
-            model.websites = angular.copy(websiteService.findWebsitesByUser(model.userId));
-            model.website = angular.copy(websiteService.findWebsiteById(model.websiteId));
-            model.origWebsite = angular.copy(model.website);
-            model.origWebsites = angular.copy(model.websites);
+            websiteService.findWebsitesByUser(model.userId)
+                .then(function (websites) {
+                    model.websites = angular.copy(websites);
+                    model.origWebsites = angular.copy(model.websites);
+                })
+            websiteService.findWebsiteById(model.userId, model.websiteId)
+                .then(function (website) {
+                    model.website = angular.copy(website);
+                    model.origWebsite = angular.copy(model.website);
+                })
         }
         init();
 
         function updateWebsite(website) {
-            websiteService.updateWebsite(website._id, website);
-            angular.copy(model.website, model.origWebsite);
-            angular.copy(model.websites, model.origWebsites);
-            $location.url("/user/" + model.userId + "/website");
+            websiteService.updateWebsite(model.userId, website._id, website)
+                .then(function (website) {
+                    angular.copy(model.website, model.origWebsite);
+                    angular.copy(model.websites, model.origWebsites);
+                    $location.url("/user/" + model.userId + "/website");
+                })
         }
 
         function deleteWebsite(websiteId) {
