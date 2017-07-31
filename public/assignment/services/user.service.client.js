@@ -3,7 +3,7 @@
         .module("WamApp")
         .factory("userService", userService);
 
-    function userService() {
+    function userService($http) {
 
         var users = [
             {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder"  },
@@ -23,60 +23,33 @@
         return api;
 
         function registerUser(user) {
-            user._id = (new Date()).getTime() + "";
-            users.push(user);
-            return user;
+            var url = "/api/user";
+            return $http.post(url, user);
         }
 
         function findUserByUsernameAndPassword(username, password) {
-            for (var u in users) {
-                var _user = users[u];
-                if (username === _user.username && password === _user.password) {
-                    return _user;
-                }
-            }
-            return null;
+            var url = "/api/user?username=" + username + "&password=" + password;
+            return $http.get(url);
         }
 
         function findUserByUsername(username) {
-            for (var u in users) {
-                var _user = users[u];
-                if (username === _user.username) {
-                    return _user;
-                }
-            }
-            return null;
+            var url = "/api/user?username=" + username;
+            return $http.get(url);
         }
 
         function findUserByID(userId) {
-            for (var u in users) {
-                if (users[u]._id === userId) {
-                    return users[u];
-                }
-            }
-            return null;
+            return $http.get("/api/user/" + userId);
         }
 
         function updateUser(userId, user) {
-            for (var u in users) {
-                if (users[u]._id === userId) {
-                    users[u] = user;
-                    return user;
-                }
-            }
-            return null;
+            var url = "/api/user/" + userId;
+            return $http.put(url, user);
         }
 
         function deleteUser(userId) {
-            var userIndex;
-            for (var u in users) {
-                if (users[u]._id === userId) {
-                    userIndex = u;
-                    users.splice(userIndex, 1);
-                    return userId;
-                }
-            }
-            return null;
+            var url = "/api/user/" + userId;
+            return $http.delete(url);
         }
+
     }
 })();
