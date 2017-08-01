@@ -32,7 +32,7 @@
                 });
         }
 
-        function updateWebsite(userId, websiteId, website) {
+        function updateWebsite(websiteId, website) {
             var url = "/api/website/" + websiteId;
             return $http.put(url, website)
                 .then(function (response) {

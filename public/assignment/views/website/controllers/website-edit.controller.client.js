@@ -26,7 +26,7 @@
         init();
 
         function updateWebsite(website) {
-            websiteService.updateWebsite(model.userId, website._id, website)
+            websiteService.updateWebsite(website._id, website)
                 .then(function (website) {
                     angular.copy(model.website, model.origWebsite);
                     angular.copy(model.websites, model.origWebsites);
