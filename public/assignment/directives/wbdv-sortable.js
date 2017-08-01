@@ -1,34 +1,18 @@
 (function () {
     angular
         .module("myDirective", [])
-        .directive("itemList", itemListDirective)
-        .directive("hello", helloDirective);
+        .directive("itemList", itemListDirective);
 
     function itemListDirective() {
         function linkFunction(scope, element) {
-            var ul = element.find("ul");
-            var startIndex = -1;
-            var endIndex = -1;
-            ul.sortable({
-                start: function (event, ui) {
-                    startIndex = $(ui.item).index();
-                },
-                stop: function (event, ui) {
-                    endIndex = $(ui.item).index();
-                    console.log(startIndex + " " + endIndex);
-                    $http.put("/page/:pageId/widget?initial=" + startIndex + "&final=" + endIndex);
-                }
-            });
+
+            var sortableDiv = element.find("sortableDiv");
+
+            sortableDiv.sortable();
         }
         return {
-            templateUrl: "../views/widget/templates/widget-list.view.client.html",
+            templateUrl: "views/widget/templates/widget-list.items.client.html",
             link: linkFunction
-        }
-    }
-
-    function helloDirective() {
-        return{
-            template: "Hello World"
         }
     }
 

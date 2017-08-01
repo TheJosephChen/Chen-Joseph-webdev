@@ -8,35 +8,8 @@
     </a>
 </div>
 <div class="container-fluid scroll">
+    <item-List></item-List>
 
-    <a class="btn-link pull-left" ng-click="model.directiveTest()" role="button">
-        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
-    </a>
-
-    <div id="searchResults">
-    </div>
-
-    <div ng-repeat="widget in model.widgets">
-        <div ng-switch="widget.widgetType">
-            <div ng-switch-when="HEADING">
-                <div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="IMAGE">
-                <div ng-include="'views/widget/templates/widget-image.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="YOUTUBE">
-                <div ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="HTML">
-
-                <a class="btn-link widget-edit pull-right" ng-click="model.editWidget(widget._id)" role="button">
-                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                </a>
-                <div ng-bind-html="model.trustThisHTMLContent(widget.text)"></div>
-
-            </div>
-        </div>
-    </div>
 </div>
 <div class="running-foot">
     <a class="btn-link footer-button pull-right" href="#!/profile/{{model.userId}}" role="button">
