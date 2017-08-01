@@ -8,6 +8,14 @@
     </a>
 </div>
 <div class="container-fluid scroll">
+
+    <a class="btn-link pull-left" ng-click="model.directiveTest()" role="button">
+        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+    </a>
+
+    <div id="searchResults">
+    </div>
+
     <div ng-repeat="widget in model.widgets">
         <div ng-switch="widget.widgetType">
             <div ng-switch-when="HEADING">

@@ -1,7 +1,8 @@
 (function () {
     angular
         .module("myDirective", [])
-        .directive("itemList", itemListDirective);
+        .directive("itemList", itemListDirective)
+        .directive("hello", helloDirective);
 
     function itemListDirective() {
         function linkFunction(scope, element) {
@@ -22,6 +23,12 @@
         return {
             templateUrl: "../views/widget/templates/widget-list.view.client.html",
             link: linkFunction
+        }
+    }
+
+    function helloDirective() {
+        return{
+            template: "Hello World"
         }
     }
 

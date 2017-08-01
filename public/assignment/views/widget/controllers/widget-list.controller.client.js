@@ -13,6 +13,7 @@
         model.editWidget = editWidget;
         model.trustThisHTMLContent = trustThisHTMLContent;
         model.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
+        model.directiveTest = directiveTest;
 
         function init() {
             model.widgets = widgetService.findWidgetsByPageId(model.pageId);
@@ -33,6 +34,26 @@
             var id = linkParts[linkParts.length - 1];
             embedUrl += id;
             return $sce.trustAsResourceUrl(embedUrl);
+        }
+
+        function directiveTest() {
+
+            var table = $("<table>");
+            table.addClass("table");
+
+            for (w in model.widgets) {
+                var widget = model.widgets[w];
+
+                var tr = $("<tr>");
+                var td = $("<td>");
+                td.append(widget._id);
+                tr.append(td);
+
+                td = $("<td>");
+                table.append(tr);
+            }
+            $("#searchResults").append(table);
+            table.sortable();
         }
 
     }
