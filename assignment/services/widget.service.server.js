@@ -20,6 +20,12 @@ app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
 app.delete("/api/widget/:widgetId", deleteWidget);
 
+app.put("/api/hello", reorderWidget);
+
+function reorderWidget(req, response) {
+    console.log("We hit the server service ");
+    response.sendStatus(200);
+}
 
 function findAllWidgetsForPage(req, response) {
     var pageId = req.params.pageId;
