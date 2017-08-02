@@ -20,10 +20,14 @@ app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
 app.delete("/api/widget/:widgetId", deleteWidget);
 
-app.put("/api/hello", reorderWidget);
+app.put("/api/page/:pageId/widget", reorderWidget);
 
 function reorderWidget(req, response) {
-    console.log("We hit the server service ");
+    var pageId = req.params.pageId;
+    var startIndex = req.query.initial;
+    var endIndex = req.query.final;
+
+    console.log("We hit the server service " + pageId + " " + startIndex + " " + endIndex);
     response.sendStatus(200);
 }
 

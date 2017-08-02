@@ -18,8 +18,7 @@
                 },
                 stop: function (event, ui) {
                     endIndex = $(ui.item).index();
-                    console.log("/api/page/" + pageId + "/widget?initial=" + startIndex + "index1&final=" + endIndex);
-                    $http.put("/api/hello");
+                    $http.put("/api/page/" + pageId + "/widget?initial=" + startIndex + "&final=" + endIndex);
                 }
             });
         }
