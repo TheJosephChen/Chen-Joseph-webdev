@@ -11,7 +11,7 @@
             sortableDiv.sortable();
         }
         return {
-            templateUrl: "views/widget/templates/widget-list.items.client.html",
+            templateUrl: "views/widget/templates/widget-list.html",
             link: linkFunction
         }
     }

@@ -42,7 +42,7 @@
 
         function deletePage(pageId) {
             var url = "/api/page/" + pageId;
-            return $http.put(url)
+            return $http.delete(url)
                 .then(function (response) {
                     return response.data;
                 });

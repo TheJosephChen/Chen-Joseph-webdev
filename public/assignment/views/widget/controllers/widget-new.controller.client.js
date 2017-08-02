@@ -12,15 +12,18 @@
         model.createWidget = createWidget;
 
         function init() {
-            model.widgets = widgetService.findWidgetsByPageId(model.pageId);
             model.widget = {};
         }
         init();
 
         function createWidget(pageId, widgetType) {
             model.widget.widgetType = widgetType;
-            model.widgetId = widgetService.createWidget(pageId, model.widget)._id;
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + model.widgetId + "/edit");
+            widgetService
+                .createWidget(pageId, model.widget)
+                .then(function (widget) {
+                    model.widgetId = widget._id
+                    $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page/" + model.pageId + "/widget/" + model.widgetId + "/edit");
+                })
         }
     }
 })();

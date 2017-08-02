@@ -42,7 +42,7 @@
 
         function deleteWebsite(websiteId) {
             var url = "/api/website/" + websiteId;
-            return $http.put(url)
+            return $http.delete(url)
                 .then(function (response) {
                     return response.data;
                 });
