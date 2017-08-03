@@ -11,13 +11,20 @@
         model.createPage = createPage;
 
         function init() {
-            model.pages = pageService.findPagesByWebsiteId(model.websiteId);
+            pageService
+                .findPagesByWebsiteId(model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                })
         }
         init();
 
         function createPage(websiteId, page) {
-            pageService.createPage(websiteId, page);
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
+            pageService
+                .createPage(websiteId, page)
+                .then(function () {
+                    $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
+                })
         }
     }
 })();

@@ -13,23 +13,33 @@
         model.deletePage = deletePage;
 
         function init() {
-            model.pages = angular.copy(pageService.findPagesByWebsiteId(model.websiteId));
-            model.page = angular.copy(pageService.findPageById(model.pageId));
-            model.origPage = angular.copy(model.page);
-            model.origPages = angular.copy(model.pages);
+            pageService.findPagesByWebsiteId(model.websiteId)
+                .then(function (pages) {
+                    model.pages = angular.copy(pages);
+                    model.origPages = angular.copy(model.pages);
+                })
+            pageService.findPageById(model.pageId)
+                .then(function (page) {
+                    model.page = angular.copy(page);
+                    model.origPage = angular.copy(model.page);
+                })
         }
         init();
 
         function updatePage(page) {
-            pageService.updatePage(page._id, page);
-            angular.copy(model.page, model.origPage);
-            angular.copy(model.pages, model.origPages);
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
+            pageService.updatePage(page._id, page)
+                .then(function (page) {
+                    angular.copy(model.page, model.origPage);
+                    angular.copy(model.pages, model.origPages);
+                    $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
+                })
         }
 
         function deletePage(pageId) {
-            pageService.deletePage(pageId);
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
+            pageService.deletePage(pageId)
+                .then(function () {
+                    $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
+                })
         }
     }
 })();

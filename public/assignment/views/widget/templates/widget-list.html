@@ -1,0 +1,25 @@
+<div get-page="{{model.pageId}}">
+    <sortableDiv>
+        <div ng-repeat="widget in model.widgets">
+            <div ng-switch="widget.widgetType">
+                <div ng-switch-when="HEADING">
+                    <div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
+                </div>
+                <div ng-switch-when="IMAGE">
+                    <div ng-include="'views/widget/templates/widget-image.view.client.html'"></div>
+                </div>
+                <div ng-switch-when="YOUTUBE">
+                    <div ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
+                </div>
+                <div ng-switch-when="HTML">
+
+                    <a class="btn-link widget-edit pull-right" ng-click="model.editWidget(widget._id)" role="button">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <div ng-bind-html="model.trustThisHTMLContent(widget.text)"></div>
+
+                </div>
+            </div>
+        </div>
+    </sortableDiv>
+</div>
