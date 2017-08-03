@@ -12,7 +12,7 @@ var widgets = [
     { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
 ];
 
-var multer = require('multer'); // npm install multer --save
+var multer = require('multer');
 var upload = multer({ dest: __dirname+'/../../public/uploads' });
 
 
