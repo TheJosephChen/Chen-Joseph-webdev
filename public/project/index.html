@@ -13,16 +13,7 @@
     <script src="app.js"></script>
 </head>
 <body>
-    <div class="container-fluid" ng-controller="SearchController as model">
-        <h1>Duelyst Card API</h1>
-        <h2>Search Card by Name</h2>
-        <input placeholder="Card Name"
-               ng-model="cardName"
-               class="form-control"/>
-        <button class="btn btn-primary btn-block" ng-click="model.searchCardByName(cardName)">
-            Search
-        </button>
-        {{model.cards}}
+    <div ng-view class="container-fluid">
     </div>
 </body>
 </html>
