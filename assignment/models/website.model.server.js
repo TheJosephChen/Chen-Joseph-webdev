@@ -8,6 +8,6 @@ module.exports = websiteModel;
 
 
 function createWebsite(developerId, website) {
-    website.developer = developerId;
+    website._developer = developerId;
     return websiteModel.create(website);
 }
