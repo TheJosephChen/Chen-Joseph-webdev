@@ -1,4 +1,5 @@
 var app = require("../../express");
+var websiteModel = require("../models/website.model.server");
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -47,10 +48,18 @@ function createWebsite(req, response) {
     var userId = req.params.userId;
     var website = req.body;
 
-    website._id = (new Date()).getTime() + "";
-    website.developerId = userId;
-    websites.push(website);
-    response.json(website);
+    websiteModel
+        .createWebsite(userId, website)
+        .then(function (websiteDoc) {
+            response.json(websiteDoc);
+        }, function (err) {
+            response.sendStatus(404).send(err);
+        })
+
+    // website._id = (new Date()).getTime() + "";
+    // website.developerId = userId;
+    // websites.push(website);
+    // response.json(website);
 }
 
 function updateWebsite(req, response) {
