@@ -22,13 +22,19 @@ app.delete("/api/website/:websiteId", deleteWebsite);
 function findWebsitesByUser(req, response) {
     var userId = req.params.userId;
 
-    var sites = [];
-    for (var w in websites) {
-        if (websites[w].developerId === userId) {
-            sites.push(websites[w]);
-        }
-    }
-    response.json(sites);
+    websiteModel
+        .findWebsitesByUser(userId)
+        .then(function (websites) {
+            response.json(websites);
+        })
+
+    // var sites = [];
+    // for (var w in websites) {
+    //     if (websites[w].developerId === userId) {
+    //         sites.push(websites[w]);
+    //     }
+    // }
+    // response.json(sites);
 }
 
 function findWebsiteById(req, response) {
