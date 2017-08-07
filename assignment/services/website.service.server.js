@@ -39,15 +39,22 @@ function findWebsitesByUser(req, response) {
 
 function findWebsiteById(req, response) {
     var websiteId = req.params.websiteId;
+    websiteModel
+        .findWebsiteById(websiteId)
+        .then(function (websiteDoc) {
+            response.json(websiteDoc)
+        }, function (err) {
+            response.sendStatus(404).send(err);
+        })
 
-    for (var w in websites) {
-        var website = websites[w];
-        if (website._id === websiteId) {
-            response.json(website);
-            return;
-        }
-    }
-    response.sendStatus(404);
+    // for (var w in websites) {
+    //     var website = websites[w];
+    //     if (website._id === websiteId) {
+    //         response.json(website);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }
 
 function createWebsite(req, response) {
