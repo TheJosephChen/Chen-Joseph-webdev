@@ -22,7 +22,7 @@ app.post("/api/page/:pageId/widget", createWidget);
 
 app.get("/api/widget/:widgetId", findWidgetById);
 app.put("/api/widget/:widgetId", updateWidget);
-app.delete("/api/widget/:widgetId", deleteWidget);
+app.delete("/api/page/:pageId/widget/:widgetId", deleteWidget);
 
 app.put("/api/page/:pageId/widget", reorderWidget);
 
@@ -171,15 +171,21 @@ function updateWidget(req, response) {
 
 function deleteWidget(req, response) {
     var widgetId = req.params.widgetId;
+    var pageId = req.params.pageId;
+    widgetModel
+        .deleteWidget(pageId, widgetId)
+        .then(function (status) {
+            response.json(status);
+        });
 
-    var widgetIndex;
-    for (var w in widgets) {
-        if (widgets[w]._id === widgetId) {
-            widgetIndex = w;
-            widgets.splice(widgetIndex, 1);
-            response.sendStatus(200);
-            return;
-        }
-    }
-    response.sendStatus(404);
+    // var widgetIndex;
+    // for (var w in widgets) {
+    //     if (widgets[w]._id === widgetId) {
+    //         widgetIndex = w;
+    //         widgets.splice(widgetIndex, 1);
+    //         response.sendStatus(200);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }

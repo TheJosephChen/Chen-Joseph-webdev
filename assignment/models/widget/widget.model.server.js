@@ -7,8 +7,18 @@ widgetModel.createWidget = createWidget;
 widgetModel.findAllWidgetsForPage = findAllWidgetsForPage;
 widgetModel.findWidgetById = findWidgetById;
 widgetModel.updateWidget = updateWidget;
+widgetModel.deleteWidget = deleteWidget;
 
 module.exports = widgetModel;
+
+
+function deleteWidget(pageId, widgetId) {
+    return widgetModel
+        .remove({_id: widgetId})
+        .then(function (status) {
+            return pageModel.removeWidget(pageId, widgetId)
+        });
+}
 
 function updateWidget(widgetId, widget) {
     return widgetModel.update({_id: widgetId},
