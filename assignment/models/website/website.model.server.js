@@ -8,7 +8,7 @@ websiteModel.findWebsitesByUser = findWebsitesByUser;
 websiteModel.findWebsiteById = findWebsiteById;
 websiteModel.updateWebsite = updateWebsite;
 websiteModel.deleteWebsite = deleteWebsite;
-
+websiteModel.addPage = addPage;
 module.exports = websiteModel;
 
 function deleteWebsite(developerId, websiteId) {
@@ -44,4 +44,13 @@ function findWebsitesByUser(developerId) {
 
 function findWebsiteById(websiteId) {
     return websiteModel.findById(websiteId);
+}
+
+function addPage(websiteId, pageId) {
+    return websiteModel
+        .findById(websiteId)
+        .then(function (website) {
+            website.pages.push(pageId);
+            return website.save();
+        } );
 }

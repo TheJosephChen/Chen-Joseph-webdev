@@ -1,4 +1,5 @@
 var app = require("../../express");
+var pageModel = require("../models/page/page.model.server");
 
 var pages = [
     { "_id": "321", "name": "Post 1", "websiteId": "456", "description": "Lorem" },
@@ -17,36 +18,56 @@ app.delete("/api/page/:pageId", deletePage);
 function findAllPagesForWebsite(req, response) {
     var websiteId = req.params.websiteId;
 
-    var _pages = [];
-    for (var p in pages) {
-        if (pages[p].websiteId === websiteId) {
-            _pages.push(pages[p]);
-        }
-    }
-    response.json(_pages);
+    pageModel
+        .findAllPagesForWebsite(websiteId)
+        .then(function (pages) {
+            response.json(pages);
+        })
+    // var _pages = [];
+    // for (var p in pages) {
+    //     if (pages[p].websiteId === websiteId) {
+    //         _pages.push(pages[p]);
+    //     }
+    // }
+    // response.json(_pages);
 }
 
 function findPageById(req, response) {
     var pageId = req.params.pageId;
 
-    for (var p in pages) {
-        var page = pages[p];
-        if (page._id === pageId) {
-            response.json(page);
-            return;
-        }
-    }
-    response.sendStatus(404);
+    pageModel
+        .findPageById(pageId)
+        .then(function (pageDoc) {
+            response.json(pageDoc)
+        }, function (err) {
+            response.sendStatus(404).send(err);
+        })
+    // for (var p in pages) {
+    //     var page = pages[p];
+    //     if (page._id === pageId) {
+    //         response.json(page);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }
 
 function createPage(req, response) {
     var websiteId = req.params.websiteId;
     var page = req.body;
 
-    page._id = (new Date()).getTime() + "";
-    page.websiteId = websiteId;
-    pages.push(page);
-    response.json(page);
+
+    pageModel
+        .createPage(websiteId, page)
+        .then(function (pageDoc) {
+            response.json(pageDoc);
+        }, function (err) {
+            response.sendStatus(404).send(err);
+        })
+    // page._id = (new Date()).getTime() + "";
+    // page.websiteId = websiteId;
+    // pages.push(page);
+    // response.json(page);
 }
 
 function updatePage(req, response) {
