@@ -1,7 +1,7 @@
 <div get-page="{{model.pageId}}">
     <sortableDiv>
         <div ng-repeat="widget in model.widgets">
-            <div ng-switch="widget.widgetType">
+            <div ng-switch="widget.type">
                 <div ng-switch-when="HEADING">
                     <div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
                 </div>

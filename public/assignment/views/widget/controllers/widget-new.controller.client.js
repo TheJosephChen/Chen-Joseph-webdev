@@ -17,7 +17,7 @@
         init();
 
         function createWidget(pageId, widgetType) {
-            model.widget.widgetType = widgetType;
+            model.widget.type = widgetType;
             widgetService
                 .createWidget(pageId, model.widget)
                 .then(function (widget) {

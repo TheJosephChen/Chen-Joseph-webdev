@@ -13,6 +13,13 @@
            placeholder="Text to display below image"
            class="form-control"/>
 
+    <label for="width">Width</label>
+    <input name="width"
+           ng-model="model.widget.width"
+           id="width"
+           placeholder="100%"
+           class="form-control"/>
+
     <label for="url">URL</label>
     <input name="url"
            ng-model="model.widget.url"
@@ -21,12 +28,7 @@
            placeholder="URL of your image"
            class="form-control"/>
 
-    <label for="width">Width</label>
-    <input name="width"
-           ng-model="model.widget.width"
-           id="width"
-           placeholder="100%"
-           class="form-control"/>
+    <a class="btn btn-default btn-primary btn-block" ng-click="model.updateWidget(model.widget)" role="button">Upload Image URL</a>
 
     <form action="/api/upload"   method="post" enctype="multipart/form-data">
         <input  name="myFile"    type="file" class="form-control"/>
@@ -34,8 +36,8 @@
         <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
         <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
         <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
-        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
-        <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+        <input  name="widgetId"  value="{{model.widgetId}}"   style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary">Upload Image File</button>
     </form>
 
     <a class="btn btn-default btn-danger btn-block" ng-click="model.unCreate()" role="button">Delete</a>

@@ -8,8 +8,17 @@ pageModel.findAllPagesForWebsite = findAllPagesForWebsite;
 pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
+pageModel.addWidget = addWidget;
 module.exports = pageModel;
 
+function addWidget(pageId, widgetId) {
+    return pageModel
+        .findById(pageId)
+        .then(function (page) {
+            page.widgets.push(widgetId);
+            return page.save();
+        } );
+}
 
 function createPage(websiteId, page) {
     page._website = websiteId;
