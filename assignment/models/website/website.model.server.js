@@ -6,6 +6,7 @@ var userModel = require("../user/user.model.server");
 websiteModel.createWebsite = createWebsite;
 websiteModel.findWebsitesByUser = findWebsitesByUser;
 websiteModel.findWebsiteById = findWebsiteById;
+websiteModel.updateWebsite = updateWebsite;
 websiteModel.deleteWebsite = deleteWebsite;
 
 module.exports = websiteModel;
@@ -17,6 +18,12 @@ function deleteWebsite(developerId, websiteId) {
             return userModel.removeWebsite(developerId, websiteId)
         });
 }
+
+function updateWebsite(websiteId, website) {
+    return websiteModel.update({_id: websiteId},
+        {$set: website});
+}
+
 function createWebsite(developerId, website) {
     website._developer = developerId;
     var websiteReturn = null;

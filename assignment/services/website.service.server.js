@@ -79,14 +79,21 @@ function updateWebsite(req, response) {
     var websiteId = req.params.websiteId;
     var website = req.body;
 
-    for (var w in websites) {
-        if (websites[w]._id === websiteId) {
-            websites[w] = website;
-            response.json(website);
-            return;
-        }
-    }
-    response.sendStatus(404);
+    websiteModel
+        .updateWebsite(websiteId, website)
+        .then(function (status) {
+            response.json(status);
+        }, function (err) {
+            response.sendStatus(404).send(err);
+        });
+    // for (var w in websites) {
+    //     if (websites[w]._id === websiteId) {
+    //         websites[w] = website;
+    //         response.json(website);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }
 
 function deleteWebsite(req, response) {
