@@ -9,7 +9,18 @@ websiteModel.findWebsiteById = findWebsiteById;
 websiteModel.updateWebsite = updateWebsite;
 websiteModel.deleteWebsite = deleteWebsite;
 websiteModel.addPage = addPage;
+websiteModel.removePage = removePage;
 module.exports = websiteModel;
+
+function removePage(websiteId, pageId) {
+    return websiteModel
+        .findById(websiteId)
+        .then(function (website) {
+            var index = website.pages.indexOf(pageId);
+            website.pages.splice(index, 1);
+            return website.save();
+        })
+}
 
 function deleteWebsite(developerId, websiteId) {
     return websiteModel

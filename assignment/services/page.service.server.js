@@ -12,7 +12,7 @@ app.post("/api/website/:websiteId/page", createPage);
 
 app.get("/api/page/:pageId", findPageById);
 app.put("/api/page/:pageId", updatePage);
-app.delete("/api/page/:pageId", deletePage);
+app.delete("/api/website/:websiteId/page/:pageId", deletePage);
 
 
 function findAllPagesForWebsite(req, response) {
@@ -93,15 +93,21 @@ function updatePage(req, response) {
 
 function deletePage(req, response) {
     var pageId = req.params.pageId;
+    var websiteId = req.params.websiteId;
+    pageModel
+        .deletePage(websiteId, pageId)
+        .then(function (status) {
+            response.json(status);
+        });
 
-    var pageIndex;
-    for (var p in pages) {
-        if (pages[p]._id === pageId) {
-            pageIndex = p;
-            pages.splice(pageIndex, 1);
-            response.sendStatus(200);
-            return;
-        }
-    }
-    response.sendStatus(404);
+    // var pageIndex;
+    // for (var p in pages) {
+    //     if (pages[p]._id === pageId) {
+    //         pageIndex = p;
+    //         pages.splice(pageIndex, 1);
+    //         response.sendStatus(200);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }

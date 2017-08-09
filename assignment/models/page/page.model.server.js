@@ -7,6 +7,7 @@ pageModel.createPage = createPage;
 pageModel.findAllPagesForWebsite = findAllPagesForWebsite;
 pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
+pageModel.deletePage = deletePage;
 module.exports = pageModel;
 
 
@@ -35,5 +36,14 @@ function findPageById(pageId) {
 function updatePage(pageId, page) {
     return pageModel.update({_id: pageId},
         {$set: page});
+
+}
+
+function deletePage(websiteId, pageId) {
+    return pageModel
+        .remove({_id: pageId})
+        .then(function (status) {
+            return websiteModel.removePage(websiteId, pageId)
+        });
 
 }
