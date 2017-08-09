@@ -1,5 +1,5 @@
 var app = require("../../express");
-var websiteModel = require("../models/website.model.server");
+var websiteModel = require("../models/website/website.model.server");
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
