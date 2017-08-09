@@ -16,7 +16,7 @@ app.post("/api/user/:userId/website", createWebsite);
 
 app.get("/api/website/:websiteId", findWebsiteById);
 app.put("/api/website/:websiteId", updateWebsite);
-app.delete("/api/website/:websiteId", deleteWebsite);
+app.delete("/api/user/:userId/website/:websiteId", deleteWebsite);
 
 
 function findWebsitesByUser(req, response) {
@@ -91,15 +91,20 @@ function updateWebsite(req, response) {
 
 function deleteWebsite(req, response) {
     var websiteId = req.params.websiteId;
-
-    var websiteIndex;
-    for (var w in websites) {
-        if (websites[w]._id === websiteId) {
-            websiteIndex = w;
-            websites.splice(websiteIndex, 1);
-            response.sendStatus(200);
-            return;
-        }
-    }
-    response.sendStatus(404);
+    var developerId = req.params.userId;
+    websiteModel
+        .deleteWebsite(developerId, websiteId)
+        .then(function (status) {
+            response.json(status);
+        });
+    // var websiteIndex;
+    // for (var w in websites) {
+    //     if (websites[w]._id === websiteId) {
+    //         websiteIndex = w;
+    //         websites.splice(websiteIndex, 1);
+    //         response.sendStatus(200);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }
