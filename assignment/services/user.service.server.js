@@ -90,6 +90,16 @@ function findUser(req, response) {
         //     }
         // }
     } else {
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                response.json(user);
+                return;
+            }, function (err) {
+                response.sendStatus(404).send(err);
+                return;
+            })
+        return;
         //     for (var u in users) {
         //         var _user = users[u];
         //         if (_user.username === username) {
@@ -98,8 +108,8 @@ function findUser(req, response) {
         //         }
         //     }
         // }
-        response.send("0");
     }
+    response.send("0");
 }
 
 function updateUser(req, response) {

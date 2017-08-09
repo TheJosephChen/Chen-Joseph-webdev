@@ -5,6 +5,7 @@ userModel.createUser = createUser;
 userModel.findUserById = findUserById;
 userModel.updateUser = updateUser;
 userModel.findUserByCredentials = findUserByCredentials;
+userModel.findUserByUsername = findUserByUsername;
 userModel.addWebsite = addWebsite;
 userModel.deleteUser = deleteUser;
 userModel.removeWebsite = removeWebsite;
@@ -27,6 +28,12 @@ function deleteUser(userId) {
             return status;
         });
 }
+
+function findUserByUsername(username) {
+    // findOne returns null if DOC not found
+    return userModel.findOne({username: username});
+}
+
 function findUserByCredentials(username, password) {
     // findOne returns null if DOC not found
     return userModel.findOne({username: username, password: password});
