@@ -74,14 +74,21 @@ function updatePage(req, response) {
     var pageId = req.params.pageId;
     var page = req.body;
 
-    for (var p in pages) {
-        if (pages[p]._id === pageId) {
-            pages[p] = page;
-            response.json(page);
-            return;
-        }
-    }
-    response.sendStatus(404);
+    pageModel
+        .updatePage(pageId, page)
+        .then(function (status) {
+            response.json(status);
+        }, function (err) {
+            response.sendStatus(404).send(err);
+        });
+    // for (var p in pages) {
+    //     if (pages[p]._id === pageId) {
+    //         pages[p] = page;
+    //         response.json(page);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }
 
 function deletePage(req, response) {

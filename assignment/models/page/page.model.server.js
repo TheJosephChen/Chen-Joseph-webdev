@@ -6,6 +6,7 @@ var websiteModel = require("../website/website.model.server");
 pageModel.createPage = createPage;
 pageModel.findAllPagesForWebsite = findAllPagesForWebsite;
 pageModel.findPageById = findPageById;
+pageModel.updatePage = updatePage;
 module.exports = pageModel;
 
 
@@ -29,4 +30,10 @@ function findAllPagesForWebsite(websiteId) {
 
 function findPageById(pageId) {
     return pageModel.findById(pageId);
+}
+
+function updatePage(pageId, page) {
+    return pageModel.update({_id: pageId},
+        {$set: page});
+
 }
