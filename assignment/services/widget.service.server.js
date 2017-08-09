@@ -61,36 +61,42 @@ function reorderWidget(req, response) {
     var pageId = req.params.pageId;
     var startIndex = req.query.initial;
     var endIndex = req.query.final;
-    console.log("We hit the server service " + pageId + " " + startIndex + " " + endIndex);
-    // make sure the movement is valid
-    if (startIndex !== -1 && endIndex !== -1) {
 
-        //first figure out which widgets belong to the page
-        var _widgets = [];
-        for (var w in widgets) {
-            if (widgets[w].pageId === pageId) {
-                _widgets.push(widgets[w]);
-            }
-        }
-        //get the indices in the page's widgets list
-        var widget1 = _widgets[startIndex];
-        var widget2 = _widgets[endIndex];
-        var w1Index = null;
-        var w2Index = null;
-
-        //get the indices in the main widgets list
-        for (var w in widgets) {
-            if (widgets[w]._id === widget1._id) {
-                w1Index = w;
-            }
-            if (widgets[w]._id === widget2._id) {
-                w2Index = w;
-            }
-        }
-        widgets.splice(w1Index, 1);
-        widgets.splice(w2Index, 0, widget1);
-    }
-    response.sendStatus(200);
+    widgetModel
+        .reorderWidget(pageId, startIndex, endIndex)
+        .then(function (page) {
+            response.json(page);
+        })
+    // console.log("We hit the server service " + pageId + " " + startIndex + " " + endIndex);
+    // // make sure the movement is valid
+    // if (startIndex !== -1 && endIndex !== -1) {
+    //
+    //     //first figure out which widgets belong to the page
+    //     var _widgets = [];
+    //     for (var w in widgets) {
+    //         if (widgets[w].pageId === pageId) {
+    //             _widgets.push(widgets[w]);
+    //         }
+    //     }
+    //     //get the indices in the page's widgets list
+    //     var widget1 = _widgets[startIndex];
+    //     var widget2 = _widgets[endIndex];
+    //     var w1Index = null;
+    //     var w2Index = null;
+    //
+    //     //get the indices in the main widgets list
+    //     for (var w in widgets) {
+    //         if (widgets[w]._id === widget1._id) {
+    //             w1Index = w;
+    //         }
+    //         if (widgets[w]._id === widget2._id) {
+    //             w2Index = w;
+    //         }
+    //     }
+    //     widgets.splice(w1Index, 1);
+    //     widgets.splice(w2Index, 0, widget1);
+    // }
+    // response.sendStatus(200);
 }
 
 function findAllWidgetsForPage(req, response) {

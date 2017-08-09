@@ -10,7 +10,16 @@ pageModel.updatePage = updatePage;
 pageModel.deletePage = deletePage;
 pageModel.addWidget = addWidget;
 pageModel.removeWidget = removeWidget;
+pageModel.getAllWidgetsForPage = getAllWidgetsForPage;
 module.exports = pageModel;
+
+function getAllWidgetsForPage(pageId) {
+    return pageModel
+        .findById(pageId)
+        .then(function (page) {
+            return page.widgets;
+        })
+}
 
 function removeWidget(pageId, widgetId) {
     return pageModel

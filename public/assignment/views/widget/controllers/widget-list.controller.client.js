@@ -9,6 +9,7 @@
         model.userId = $routeParams.userId;
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
+        model.temp = [];
 
         model.editWidget = editWidget;
         model.trustThisHTMLContent = trustThisHTMLContent;
@@ -19,6 +20,17 @@
                 .findWidgetsByPageId(model.pageId)
                 .then(function (widgets) {
                     model.widgets = widgets;
+                })
+                .then(function () {
+                    for (var w in model.widgets) {
+                        widgetService
+                            .findWidgetById(model.widgets[w])
+                            .then(function (widget) {
+                                model.temp.push(widget);
+                            })
+                    }
+                    model.widgets = model.temp;
+
                 })
         }
         init();
