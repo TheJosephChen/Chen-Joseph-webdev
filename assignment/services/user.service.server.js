@@ -31,16 +31,24 @@ function registerUser(req, response) {
 function deleteUser(req, response) {
     var userId = req.params.userId;
 
-    var userIndex;
-    for (var u in users) {
-        if (users[u]._id === userId) {
-            userIndex = u;
-            users.splice(userIndex, 1);
-            response.sendStatus(200);
-            return;
-        }
-    }
-    response.sendStatus(404);
+    userModel
+        .deleteUser(userId)
+        .then(function (status) {
+            response.json(status);
+        }, function (err) {
+            response.sendStatus(404).send(err);
+        });
+
+    // var userIndex;
+    // for (var u in users) {
+    //     if (users[u]._id === userId) {
+    //         userIndex = u;
+    //         users.splice(userIndex, 1);
+    //         response.sendStatus(200);
+    //         return;
+    //     }
+    // }
+    // response.sendStatus(404);
 }
 
 function getAllUsers(req, response) {
