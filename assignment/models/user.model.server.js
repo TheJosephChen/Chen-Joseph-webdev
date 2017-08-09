@@ -9,6 +9,7 @@ userModel.addWebsite = addWebsite;
 module.exports = userModel;
 
 function findUserByCredentials(username, password) {
+    // findOne returns null if DOC not found
     return userModel.findOne({username: username, password: password});
 }
 

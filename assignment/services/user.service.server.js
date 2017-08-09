@@ -82,15 +82,16 @@ function findUser(req, response) {
         //     }
         // }
     } else {
-        for (var u in users) {
-            var _user = users[u];
-            if (_user.username === username) {
-                response.send(_user);
-                return;
-            }
-        }
+        //     for (var u in users) {
+        //         var _user = users[u];
+        //         if (_user.username === username) {
+        //             response.send(_user);
+        //             return;
+        //         }
+        //     }
+        // }
+        response.send("0");
     }
-    response.send("0");
 }
 
 function updateUser(req, response) {
