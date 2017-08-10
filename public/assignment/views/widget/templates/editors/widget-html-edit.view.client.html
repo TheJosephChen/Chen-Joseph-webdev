@@ -8,21 +8,13 @@
            placeholder="Widget name"
            class="form-control"/>
 
-    <label for="text">Text</label>
-    <input name="text"
-           ng-model="model.widget.text"
-           type="text"
-           id="text"
-           placeholder="Text to display"
-           class="form-control"/>
+    <div text-angular ng-model="model.widget.text">
+        <div class="ta-toolbar=[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+        </div>
+    </div>
 
-    <label for="size">Size</label>
-    <input name="size"
-           ng-model="model.widget.size"
-           id="size"
-           type="number"
-           placeholder="3"
-           class="form-control"/>
 
     <a class="btn btn-default btn-primary btn-block" ng-click="model.updateWidget(model.widget)" role="button">Ok</a>
     <a class="btn btn-default btn-danger btn-block" ng-click="model.unCreate()" role="button">Delete</a>

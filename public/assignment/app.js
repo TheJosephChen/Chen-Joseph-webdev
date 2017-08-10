@@ -1,4 +1,4 @@
 (function myFunction() {
-    angular.module("WamApp", ["ngRoute", "myDirective"]);
+    angular.module("WamApp", ["ngRoute", "myDirective", "textAngular"]);
 
 })();
