@@ -28,10 +28,11 @@ app.put("/api/page/:pageId/widget", reorderWidget);
 
 app.post ("/api/upload/", upload.single('myFile'), uploadImage);
 
-function uploadImage(req, res) {;
+function uploadImage(req, res) {
+
+    var widgetId      = req.body.widgetId;
     var width         = req.body.width;
     var myFile        = req.file;
-    var widgetId      = req.body.widgetId;
 
     var userId = req.body.userId;
     var websiteId = req.body.websiteId;
@@ -50,6 +51,11 @@ function uploadImage(req, res) {;
         });
 
     widget.url = '/uploads/'+filename;
+
+    widgetModel
+        .updateWidget(widgetId, widget)
+        .then(function () {
+        });
 
     var callbackUrl   = "/assignment/#!/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget";
 

@@ -1,43 +1,51 @@
 <div class="container-fluid scroll">
 
 
-    <label for="name">Name</label>
-    <input name="name"
-           id="name"
-           placeholder="Image name"
-           class="form-control"/>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input name="name"
+               ng-model="model.widget.name"
+               id="name"
+               placeholder="Image name"
+               class="form-control"/>
+    </div>
 
-    <label for="text">Text</label>
-    <input name="text"
-           id="text"
-           placeholder="Text to display below image"
-           class="form-control"/>
+    <div class="form-group">
+        <label for="text">Text</label>
+        <input name="text"
+               ng-model="model.widget.text"
+               id="text"
+               placeholder="Text to display below image"
+               class="form-control"/>
+    </div>
 
-    <label for="width">Width</label>
-    <input name="width"
-           ng-model="model.widget.width"
-           id="width"
-           placeholder="100%"
-           class="form-control"/>
+    <div class="form-group">
+        <label for="width">Width</label>
+        <input name="width"
+               ng-model="model.widget.width"
+               id="width"
+               placeholder="100%"
+               class="form-control"/>
+    </div>
 
-    <label for="url">URL</label>
-    <input name="url"
-           ng-model="model.widget.url"
-           id="url"
-           type="url"
-           placeholder="URL of your image"
-           class="form-control"/>
-
+    <div class="form-group">
+        <label for="url">URL</label>
+        <input name="url"
+               ng-model="model.widget.url"
+               id="url"
+               type="url"
+               placeholder="URL of your image"
+               class="form-control"/>
+    </div>
     <a class="btn btn-default btn-primary btn-block" ng-click="model.updateWidget(model.widget)" role="button">Upload Image URL</a>
-
     <form action="/api/upload"   method="post" enctype="multipart/form-data">
         <input  name="myFile"    type="file" class="form-control"/>
         <input  name="width"     value="{{model.widget.width}}" style="display: none"/>
         <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
         <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
         <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
-        <input  name="widgetId"  value="{{model.widgetId}}"   style="display: none"/>
-        <button type="submit"    class="btn btn-block btn-primary">Upload Image File</button>
+        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
     </form>
 
     <a class="btn btn-default btn-danger btn-block" ng-click="model.unCreate()" role="button">Delete</a>
