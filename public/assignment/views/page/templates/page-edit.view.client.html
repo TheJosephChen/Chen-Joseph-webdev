@@ -21,7 +21,11 @@
                 </li>
                 <li ng-repeat="page in model.pages" class="list-group-item">
                     <div class="row">
-                        <div class="col-xs-10">{{page.name}}</div>
+                        <div class="col-xs-10 no-underline">
+                            <a class="btn-link" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget" role="button">
+                                {{page.name}}
+                            </a>
+                        </div>
                         <div class="col-xs-2">
                             <a class="btn-link pull-right" href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/edit" role="button">
                                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
