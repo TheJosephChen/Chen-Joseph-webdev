@@ -3,4 +3,16 @@
     <h2>Card Details</h2>
 
     {{model.card}}
+
+    <div class="comment-section">
+        <label for="comments">Comments</label>
+        <input name="comments"
+               ng-model="model.comment"
+               type="comments"
+               id="comments"
+               placeholder="say something about this card"
+               class="form-control"/>
+        <a class="btn btn-default btn-primary btn-block" ng-click="model.rateUser(currentUser, model.user, model.rating)" role="button">Comment</a>
+    </div>
+
 </div>
