@@ -15,6 +15,10 @@
                 templateUrl: "views/user/templates/login.view.html",
                 controller: "loginController",
                 controllerAs: "model"})
+            .when("/register", {
+                templateUrl: "views/user/templates/register.view.html",
+                controller: "registerController",
+                controllerAs: "model"})
             .when("/search", {
                 templateUrl: "views/search/templates/search.html",
                 controller: "cardSearchController",
