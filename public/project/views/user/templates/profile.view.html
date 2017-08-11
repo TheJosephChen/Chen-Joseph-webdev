@@ -1,0 +1,23 @@
+<div>
+    <div class="container-fluid scroll scroll-no-foot">
+        <h1>{{model.user.username}}'s Profile</h1>
+
+        <label for="tournComp">Rate {{model.user.username}} as a tournament competitor</label>
+        <input name="tournComp"
+               type="number"
+               id="tournComp"
+               placeholder="0-10"
+               class="form-control"/>
+
+
+        <label for="tournOrg">Rate {{model.user.username}} as a tournament organizer</label>
+        <input name="tournOrg"
+               type="number"
+               id="tournOrg"
+               placeholder="0-10"
+               class="form-control"/>
+
+        <b>Recent History:</b>
+
+    </div>
+</div>
