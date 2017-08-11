@@ -22,20 +22,23 @@
     <script src="views/search/controllers/card-search.controller.js"></script>
     <script src="views/user/controllers/login.controller.js"></script>
     <script src="views/user/controllers/register.controller.js"></script>
+    <script src="views/user/controllers/user-search.controller.js"></script>
     <!-- Stylesheet -->
     <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="running-head">
-        Home
         <a class="btn-link header-button pull-left" href="#!/" role="button">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </a>
-
+        <div class="pull-left">
+            Home
+        </div>
         <a class="btn-link header-button pull-right" href="#!/login" role="button">
             Login
         </a>
     </div>
+    {{model.errorMessage}}
     <div ng-view>
     </div>
 </body>
