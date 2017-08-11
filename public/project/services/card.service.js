@@ -6,6 +6,7 @@
     function cardService($http) {
         this.searchCardByName = searchCardByName;
         this.getCardByName = getCardByName;
+        this.getCommentsByCardName = getCommentsByCardName;
 
         function searchCardByName(cardName) {
             var url = "https://duelyststats.info/scripts/carddata/get.php?cardName=" + cardName;
@@ -23,6 +24,11 @@
                 .then(function (response) {
                     return response.data;
                 })
+        }
+
+        function getCommentsByCardName(cardName) {
+            return getCardByName(cardName);
+
         }
     }
 

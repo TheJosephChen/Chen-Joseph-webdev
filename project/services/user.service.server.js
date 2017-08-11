@@ -2,7 +2,6 @@ var app = require("../../express");
 var userModel = require("../models/user/user.model.server");
 
 // html handlers
-app.get("/api/users", getAllUsers);
 app.get("/api/user/:userId", getUserById);
 app.get("/api/user", findUser);
 app.post("/api/user", registerUser);
