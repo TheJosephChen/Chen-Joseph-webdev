@@ -4,7 +4,7 @@
         .controller("loginController", loginController);
 
 
-    function loginController($location, userService) {
+    function loginController($location, userService, $rootScope) {
         var model = this;
 
         model.login = login;
@@ -22,7 +22,9 @@
                     if (user === "0" || user === null) {
                         model.errorMessage = "User not found";
                     } else {
-                        $location.url("/profile/" + user._id);
+                        $rootScope.currentUser = user;
+                        //$location.url("/profile/" + user._id);
+                        $location.url("/");
                     }
 
                 })
