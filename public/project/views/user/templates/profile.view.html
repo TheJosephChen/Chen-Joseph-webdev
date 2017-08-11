@@ -23,6 +23,13 @@
 
 
         <b>Recent History:</b>
+        <table class="table">
+            <tr ng-repeat="history in model.user.history">
+                <td>
+                    {{history}}
+                </td>
+            </tr>
+        </table>
 
     </div>
 </div>

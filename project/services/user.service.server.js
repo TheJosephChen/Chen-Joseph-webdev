@@ -15,7 +15,7 @@ app.get("/api/user", findUser);
 app.post("/api/user", registerUser);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
-app.put("/api/user", rateUser)
+app.put("/api/user", updateUserHistory)
 
 function registerUser(req, response) {
     var user = req.body;
@@ -135,11 +135,11 @@ function updateUser(req, response) {
     // response.sendStatus(404);
 }
 
-function rateUser(req, response) {
+function updateUserHistory(req, response) {
     var userId = req.query.userId;
-    var message = req.query.rating;
+    var message = req.query.message;
     userModel
-        .addRating(userId, message)
+        .addToHistory(userId, message)
         .then(function (status) {
             response.json(status);
         })

@@ -46,7 +46,7 @@
         }
 
         function rateUser(ratingId, message) {
-            var url = "/api/user?userId=" + ratingId + "&rating=" + message;
+            var url = "/api/user?userId=" + ratingId + "&message=" + message;
             return $http.put(url);
         }
 
