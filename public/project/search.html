@@ -1,0 +1,16 @@
+<h2>Search Card by Name</h2>
+<input placeholder="Card Name ex. sister"
+       ng-model="cardName"
+       class="form-control"/>
+<button class="btn btn-primary btn-block" ng-click="model.searchCardByName(cardName)">
+    Search
+</button>
+<table class="table">
+    <tr ng-repeat="card in model.cards">
+        <td>
+            <a href="#!/details/{{card.value}}">
+                {{card.value}}
+            </a>
+        </td>
+    </tr>
+</table>
