@@ -11,6 +11,10 @@
             .when("/", {
                 templateUrl: "home.html"
             })
+            .when("/login", {
+                templateUrl: "views/user/templates/login.view.html",
+                controller: "loginController",
+                controllerAs: "model"})
             .when("/search", {
                 templateUrl: "views/search/templates/search.html",
                 controller: "cardSearchController",
