@@ -11,7 +11,8 @@
             "findUserByID": findUserByID,
             "registerUser": registerUser,
             "updateUser": updateUser,
-            "deleteUser": deleteUser
+            "deleteUser": deleteUser,
+            "rateUser": rateUser
         };
         return api;
 
@@ -42,6 +43,11 @@
         function deleteUser(userId) {
             var url = "/api/user/" + userId;
             return $http.delete(url);
+        }
+
+        function rateUser(ratingId, message) {
+            var url = "/api/user?userId=" + ratingId + "&rating=" + message;
+            return $http.put(url);
         }
 
     }

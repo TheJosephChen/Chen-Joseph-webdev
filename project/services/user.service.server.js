@@ -15,6 +15,7 @@ app.get("/api/user", findUser);
 app.post("/api/user", registerUser);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
+app.put("/api/user", rateUser)
 
 function registerUser(req, response) {
     var user = req.body;
@@ -132,4 +133,15 @@ function updateUser(req, response) {
     //     }
     // }
     // response.sendStatus(404);
+}
+
+function rateUser(req, response) {
+    var userId = req.query.userId;
+    var message = req.query.rating;
+    userModel
+        .addRating(userId, message)
+        .then(function (status) {
+            response.json(status);
+        })
+
 }

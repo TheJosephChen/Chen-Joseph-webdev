@@ -1,22 +1,26 @@
 <div>
     <div class="container-fluid scroll scroll-no-foot">
         {{currentUser.username}}
+        {{model.ratingMessage}}
         <h1>{{model.user.username}}'s Profile</h1>
 
-        <label for="tournComp">Rate {{model.user.username}} as a tournament competitor</label>
+        <!--<label for="tournComp">Rate {{model.user.username}} as a tournament competitor</label>
         <input name="tournComp"
                type="number"
                id="tournComp"
                placeholder="0-10"
-               class="form-control"/>
+               class="form-control"/>-->
 
 
         <label for="tournOrg">Rate {{model.user.username}} as a tournament organizer</label>
         <input name="tournOrg"
+               ng-model="model.rating"
                type="number"
                id="tournOrg"
                placeholder="0-10"
                class="form-control"/>
+        <a class="btn btn-default btn-primary btn-block" ng-click="model.rateUser(currentUser, model.user, model.rating)" role="button">Rate</a>
+
 
         <b>Recent History:</b>
 

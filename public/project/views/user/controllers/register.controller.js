@@ -4,7 +4,7 @@
         .controller("registerController", registerController);
 
 
-    function registerController($location, userService) {
+    function registerController($location, userService, $rootScope) {
         var model = this;
 
         model.registerUser = registerUser;
@@ -25,7 +25,7 @@
                 })
                 .then(function (response) {
                     var _user = response.data;
-                    //$location.url("/profile/" + _user._id);
+                    $rootScope.currentUser = _user;
                     $location.url("/");
                 });
         }

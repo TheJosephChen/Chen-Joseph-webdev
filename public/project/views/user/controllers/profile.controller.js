@@ -9,6 +9,7 @@
 
         model.updateUser = updateUser;
         model.unregisterUser = unregisterUser;
+        model.rateUser = rateUser;
 
         function init() {
             userService.findUserByID(userId)
@@ -29,5 +30,13 @@
             userService.deleteUser(userId);
             $location.url("/login");
         };
+
+        function rateUser(ratingUser, ratedUser, rating) {
+            model.ratingMessage = rating;
+            var ratingMessage = ratingUser.username + " has given a rating of " + rating + " to " + ratedUser.username;
+            userService.rateUser(ratingUser._id, ratingMessage);
+            var ratedMessage = ratedUser.username + " has received a rating of " + rating + " from " + ratingUser.username;
+            userService.rateUser(ratedUser._id, ratedMessage);
+        }
     }
 })();

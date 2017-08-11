@@ -7,6 +7,7 @@ userModel.updateUser = updateUser;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
 userModel.deleteUser = deleteUser;
+userModel.addRating = addRating;
 module.exports = userModel;
 
 function deleteUser(userId) {
@@ -38,4 +39,13 @@ function createUser(user) {
 
 function findUserById(userId) {
     return userModel.findById(userId);
+}
+
+function addRating(ratingId, message) {
+    return userModel
+        .findById(ratingId)
+        .then(function (user) {
+            user.history.push(message);
+            return user.save();
+        } );
 }
