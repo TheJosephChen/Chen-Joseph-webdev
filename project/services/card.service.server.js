@@ -11,7 +11,7 @@ function createComment(req, response) {
     var cardName = req.query.cardname;
     var comment = req.query.comment;
     cardModel
-        .addCommentToCard(cardName, comment)
+        .addCommentToCard(userId, cardName, comment)
         .then(function (card) {
             response.json(card);
             return;
