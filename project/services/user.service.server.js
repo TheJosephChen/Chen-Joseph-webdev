@@ -131,5 +131,4 @@ function updateUserHistory(req, response) {
         .then(function (status) {
             response.json(status);
         })
-
 }

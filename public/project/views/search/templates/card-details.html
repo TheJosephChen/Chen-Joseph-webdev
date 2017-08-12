@@ -2,7 +2,7 @@
     {{currentUser.username}}
     <h2>Card Details</h2>
 
-    {{model.card}}
+    {{model.card.text}}
 
     <div class="comment-section">
         <label for="comments">Comments</label>
@@ -12,8 +12,15 @@
                id="comments"
                placeholder="say something about this card"
                class="form-control"/>
-        <a class="btn btn-default btn-primary btn-block" ng-click="model.createComment(currentUser, model.card, model.comment)" role="button">Comment</a>
+        <a class="btn btn-default btn-primary btn-block" ng-click="model.createComment(currentUser, model.comment)" role="button">Comment</a>
     </div>
-    {{model.comments}}
+    <table class="table">
+        <tr ng-repeat="comment in model.card.comments">
+            <td>
+                {{comment}}
+            </td>
+        </tr>
+    </table>
+    {{model.card.comments}}
 
 </div>

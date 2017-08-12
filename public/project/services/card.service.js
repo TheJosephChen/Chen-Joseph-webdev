@@ -12,9 +12,11 @@
         this.createComment = createComment;
 
 
-        function createComment() {
-            
+        function createComment(userId, cardName, comment) {
+            var url = "/api/card?userId=" + userId + "&cardname=" + cardName + "&comment=" + comment;
+            return $http.put(url);
         }
+
         function getCardByCardName(cardName) {
             var card = {name: cardName};
             return getCardByName(cardName);

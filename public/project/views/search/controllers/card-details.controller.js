@@ -8,6 +8,7 @@
 
         model.cardName = $routeParams.cardName;
         model.comments = "something went wrong";
+        model.card = {};
 
         model.createComment = createComment;
 
@@ -20,7 +21,7 @@
         init();
 
         function renderCard(card) {
-            model.card = card;
+            model.card.text = card;
             return card;
         }
 
@@ -31,12 +32,12 @@
                 .then(function (response) {
                     var comments = response.data;
                     if (comments !== null) {
-                        model.comments = comments;
+                        model.card.comments = comments.comments;
                     } else {
                         cardService
                             .createCard({name: cardName})
                             .then(function (response) {
-                                model.comments = response.data;
+                                model.card.comments = response.data.comments;
                             })
                     }
                 })
@@ -44,7 +45,8 @@
         }
 
         function createComment(user, comment) {
-
+            var _comment = user.username + " said " + comment;
+            cardService.createComment(user._id, model.cardName, _comment);
         }
 
     }

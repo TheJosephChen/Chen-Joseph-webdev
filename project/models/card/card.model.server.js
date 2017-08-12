@@ -5,6 +5,16 @@ module.exports = cardModel;
 
 cardModel.createCard = createCard;
 cardModel.findCardByName = findCardByName;
+cardModel.addCommentToCard = addCommentToCard;
+
+function addCommentToCard(cardname, comment) {
+    return cardModel
+        .findCardByName(cardname)
+        .then(function (card) {
+            card.comments.push(comment);
+            return card.save();
+        } );
+}
 
 function findCardByName(cardname) {
     // findOne returns null if DOC not found
