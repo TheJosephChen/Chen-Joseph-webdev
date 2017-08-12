@@ -12,6 +12,9 @@
         this.createComment = createComment;
 
 
+        function createComment() {
+            
+        }
         function getCardByCardName(cardName) {
             var card = {name: cardName};
             return getCardByName(cardName);

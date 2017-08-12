@@ -43,8 +43,8 @@
             return card;
         }
 
-        function createComment(user, card, comment) {
-            cardService.createComment(user._id, card, comment);
+        function createComment(user, comment) {
+
         }
 
     }
