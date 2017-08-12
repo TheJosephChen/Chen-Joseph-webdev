@@ -6,6 +6,31 @@
     function cardService($http) {
         this.searchCardByName = searchCardByName;
         this.getCardByName = getCardByName;
+        this.getCardByCardName = getCardByCardName;
+        this.createCard = createCard;
+        this.findCardByName = findCardByName;
+        this.createComment = createComment;
+
+
+        function createComment(userId, cardName, comment) {
+            var url = "/api/card?userId=" + userId + "&cardname=" + cardName + "&comment=" + comment;
+            return $http.put(url);
+        }
+
+        function getCardByCardName(cardName) {
+            var card = {name: cardName};
+            return getCardByName(cardName);
+        }
+
+        function findCardByName(cardName) {
+            var url = "/api/card?cardname=" + cardName;
+            return $http.get(url);
+        }
+
+        function createCard(card) {
+            var url = "/api/card";
+            return $http.post(url, card);
+        }
 
         function searchCardByName(cardName) {
             var url = "https://duelyststats.info/scripts/carddata/get.php?cardName=" + cardName;
@@ -24,6 +49,7 @@
                     return response.data;
                 })
         }
+
     }
 
 })();

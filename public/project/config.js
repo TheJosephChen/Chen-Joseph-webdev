@@ -9,8 +9,22 @@
 
         $routeProvider
             .when("/", {
-                templateUrl: "home.html"
+                templateUrl: "home.html",
+                controller: "userSearchController",
+                controllerAs: "model"
             })
+            .when("/login", {
+                templateUrl: "views/user/templates/login.view.html",
+                controller: "loginController",
+                controllerAs: "model"})
+            .when("/profile/:userId", {
+                templateUrl: "views/user/templates/profile.view.html",
+                controller: "profileController",
+                controllerAs: "model"})
+            .when("/register", {
+                templateUrl: "views/user/templates/register.view.html",
+                controller: "registerController",
+                controllerAs: "model"})
             .when("/search", {
                 templateUrl: "views/search/templates/search.html",
                 controller: "cardSearchController",
