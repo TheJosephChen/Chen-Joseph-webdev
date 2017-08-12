@@ -8,11 +8,12 @@
         <label for="comments">Comments</label>
         <input name="comments"
                ng-model="model.comment"
-               type="comments"
+               type="text"
                id="comments"
                placeholder="say something about this card"
                class="form-control"/>
-        <a class="btn btn-default btn-primary btn-block" ng-click="model.createComment(currentUser, model.comment)" role="button">Comment</a>
+        <a class="btn btn-default btn-primary btn-block" ng-click="model.createComment(currentUser, model.card, model.comment)" role="button">Comment</a>
     </div>
+    {{model.comments}}
 
 </div>

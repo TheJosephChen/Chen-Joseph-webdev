@@ -7,31 +7,44 @@
         var model = this;
 
         model.cardName = $routeParams.cardName;
+        model.comments = "something went wrong";
 
         model.createComment = createComment;
 
         function init() {
             cardService
-                .getCardByName(model.cardName)
-                .then(getCommentsByCardName)
+                .getCardByCardName(model.cardName)
+                .then(getCardComments)
                 .then(renderCard);
         }
         init();
 
         function renderCard(card) {
             model.card = card;
-
+            return card;
         }
 
-        function createComment(user, comment) {
-
-        }
-
-        function getCommentsByCardName(card) {
+        function getCardComments(card) {
             var cardName = card.split(",")[0];
-            var _card = cardService
-                .getCommentsByCardName(cardName);
-            return _card;
+            cardService
+                .findCardByName(cardName)
+                .then(function (response) {
+                    var comments = response.data;
+                    if (comments !== null) {
+                        model.comments = comments;
+                    } else {
+                        cardService
+                            .createCard({name: cardName})
+                            .then(function (response) {
+                                model.comments = response.data;
+                            })
+                    }
+                })
+            return card;
+        }
+
+        function createComment(user, card, comment) {
+            cardService.createComment(user._id, card, comment);
         }
 
     }
