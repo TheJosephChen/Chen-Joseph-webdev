@@ -41,7 +41,9 @@
                 controllerAs: "model"
             })
             .when("/tournament/", {
-                templateUrl: "views/tournament/templates/tournament-list.html"
+                templateUrl: "views/tournament/templates/tournament-list.html",
+                controller: "tournamentListController",
+                controllerAs: "model"
             })
             .when("/tournament/create", {
                 templateUrl: "views/tournament/templates/tournament-create.html",

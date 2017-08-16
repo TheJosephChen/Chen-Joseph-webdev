@@ -4,7 +4,12 @@ var tournamentModel = mongoose.model("TournamentModel", tournamentSchema);
 module.exports = tournamentModel;
 
 tournamentModel.createTournament = createTournament;
+tournamentModel.findAllTournaments = findAllTournaments;
 
 function createTournament(tournament) {
     return tournamentModel.create(tournament);
+}
+
+function findAllTournaments() {
+    return tournamentModel.find();
 }
