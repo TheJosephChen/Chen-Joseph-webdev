@@ -38,7 +38,7 @@
         <h3>Log in to comment on this card.</h3>
     </div>
     <table class="table">
-        <tr ng-repeat="comment in model.card.comments">
+        <tr ng-repeat="comment in model.card.comments track by $index">
             <td>
                 {{comment}}
             </td>

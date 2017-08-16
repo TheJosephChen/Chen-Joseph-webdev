@@ -37,6 +37,7 @@
             userService.rateUser(ratingUser._id, ratingMessage);
             var ratedMessage = ratedUser.username + " has received a rating of " + rating + " from " + ratingUser.username;
             userService.rateUser(ratedUser._id, ratedMessage);
+            init();
         }
     }
 })();

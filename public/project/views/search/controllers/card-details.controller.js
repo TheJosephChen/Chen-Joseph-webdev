@@ -47,6 +47,7 @@
         function createComment(user, comment) {
             var _comment = user.username + " commented '" + comment + "'";
             cardService.createComment(user._id, model.cardName, _comment);
+            init();
         }
 
     }

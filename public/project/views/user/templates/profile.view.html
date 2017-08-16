@@ -40,7 +40,7 @@
 
         <b>Recent History:</b>
         <table class="table">
-            <tr ng-repeat="history in model.user.history">
+            <tr ng-repeat="history in model.user.history track by $index">
                 <td>
                     {{history}}
                 </td>
