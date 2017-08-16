@@ -5,6 +5,7 @@ module.exports = tournamentModel;
 
 tournamentModel.createTournament = createTournament;
 tournamentModel.findAllTournaments = findAllTournaments;
+tournamentModel.findAllTournamentsForOrganizer = findAllTournamentsForOrganizer;
 
 function createTournament(userId, tournament) {
     tournament.organizer = userId;
@@ -13,4 +14,8 @@ function createTournament(userId, tournament) {
 
 function findAllTournaments() {
     return tournamentModel.find();
+}
+
+function findAllTournamentsForOrganizer(userId) {
+    return tournamentModel.find({organizer: userId});
 }

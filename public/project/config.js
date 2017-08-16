@@ -50,6 +50,11 @@
                 controller: "tournamentNewController",
                 controllerAs: "model"
             })
+            .when("/tournament/manage/:userId", {
+                templateUrl: "views/tournament/templates/tournament-manage.html",
+                controller: "tournamentManageController",
+                controllerAs: "model"
+            })
 
 
     }
