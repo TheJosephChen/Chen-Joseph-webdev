@@ -45,7 +45,7 @@ function addToHistory(userId, message) {
     return userModel
         .findById(userId)
         .then(function (user) {
-            user.history.push(message);
+            user.history.unshift(message);
             return user.save();
         } );
 }

@@ -21,15 +21,21 @@
 
     {{model.card.text}}
 
-    <div class="comment-section">
-        <label for="comments">Comments</label>
-        <input name="comments"
-               ng-model="model.comment"
-               type="text"
-               id="comments"
-               placeholder="say something about this card"
-               class="form-control"/>
-        <a class="btn btn-default btn-primary btn-block" ng-click="model.createComment(currentUser, model.comment)" role="button">Comment</a>
+    <h2>Comments</h2>
+    <div ng-show="currentUser">
+        <div class="comment-section">
+            <label for="comments">Comment</label>
+            <input name="comments"
+                   ng-model="model.comment"
+                   type="text"
+                   id="comments"
+                   placeholder="say something about this card"
+                   class="form-control"/>
+            <a class="btn btn-default btn-primary btn-block" ng-click="model.createComment(currentUser, model.comment)" role="button">Comment</a>
+        </div>
+    </div>
+    <div ng-show="!currentUser">
+        <h3>Log in to comment on this card.</h3>
     </div>
     <table class="table">
         <tr ng-repeat="comment in model.card.comments">

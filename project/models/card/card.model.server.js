@@ -12,10 +12,11 @@ function addCommentToCard(userId, cardname, comment) {
     return cardModel
         .findCardByName(cardname)
         .then(function (card) {
-            card.comments.push(comment);
+            card.comments.unshift(comment);
             return card.save();
         })
         .then(function () {
+            comment += " on card " + cardname;
             userModel
                 .addToHistory(userId, comment)
                 .then(function (status) {
