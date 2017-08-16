@@ -8,6 +8,10 @@ function createTournament(req, response) {
     var tournament = req.body;
     console.log(userId);
     console.log(tournament);
-    response.json("");
+    tournamentModel
+        .createTournament(tournament)
+        .then(function (tournament) {
+            response.json(tournament);
+        })
 
 }
