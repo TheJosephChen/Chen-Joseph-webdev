@@ -10,6 +10,7 @@
         model.login = login;
 
         function init() {
+            $rootScope.currentUser = null;
 
         };
 

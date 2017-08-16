@@ -38,6 +38,9 @@
         <a ng-show="!currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
             Login
         </a>
+        <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+            Logout
+        </a>
         <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/profile/{{currentUser._id}}" role="button">
             Profile
         </a>
