@@ -1,3 +1,21 @@
+<div class="running-head">
+    <a class="btn-link header-button pull-left" href="#!/" role="button">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    </a>
+    <a class="btn-link header-button pull-left" href="#!/" role="button">
+        Home
+    </a>
+    <a ng-show="!currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+        Login
+    </a>
+    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+        Logout
+    </a>
+    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/profile/{{currentUser._id}}" role="button">
+        Profile
+    </a>
+</div>
+
 <div class="container-fluid">
 
     <div ng-show="model.error" class="alert alert-danger">
