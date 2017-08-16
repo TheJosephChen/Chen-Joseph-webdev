@@ -41,10 +41,12 @@
                 controllerAs: "model"
             })
             .when("/tournament/", {
-                templateUrl: "views/tournament/tournament-list.html"
+                templateUrl: "views/tournament/templates/tournament-list.html"
             })
             .when("/tournament/create", {
-                templateUrl: "views/tournament/tournament-create.html"
+                templateUrl: "views/tournament/templates/tournament-create.html",
+                controller: "tournamentNewController",
+                controllerAs: "model"
             })
 
 
