@@ -19,5 +19,11 @@
 
 <div class="container-fluid">
     Tournament list
-    {{model.tournaments}}
+    <table class="table">
+        <tr ng-repeat="tournament in model.tournaments track by $index">
+            <td>
+                {{tournament.name}}
+            </td>
+        </tr>
+    </table>
 </div>
