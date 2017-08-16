@@ -33,7 +33,8 @@
         }
 
         function searchCardByName(cardName) {
-            var url = "https://duelyststats.info/scripts/carddata/get.php?cardName=" + cardName;
+            var url = "/api/duelyststats/cardname/" + cardName;
+            //var url = "https://duelyststats.info/scripts/carddata/get.php?cardName=" + cardName;
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
