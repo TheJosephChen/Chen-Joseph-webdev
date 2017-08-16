@@ -44,7 +44,8 @@
         // function only used to get detailed card information
         // assumes card name is unique (already parsed in search list)
         function getCardByName(cardName) {
-            var url = "https://duelyststats.info/scripts/carddata/get.php?cardName=" + cardName;
+            var url = "/api/duelyststats/cardname/" + cardName;
+            //var url = "https://duelyststats.info/scripts/carddata/get.php?cardName=" + cardName;
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
