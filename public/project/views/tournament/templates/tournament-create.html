@@ -19,7 +19,23 @@
 
 <div class="container-fluid">
     Tournament creation page
-    <button class="btn btn-primary btn-block" ng-click="model.createTournament(currentUser)">
+
+    <label for="name">Name</label>
+    <input name="name"
+           ng-model="model.tournament.name"
+           id="name"
+           placeholder="Name"
+           class="form-control"/>
+
+    <label for="max">Maximum number of participants</label>
+    <input name="max"
+           ng-model="model.tournament.max"
+           id="max"
+           type="number"
+           placeholder="0-32"
+           class="form-control"/>
+
+    <button class="btn btn-primary btn-block" ng-click="model.createTournament(currentUser, model.tournament)">
         Create tournament
     </button>
 </div>

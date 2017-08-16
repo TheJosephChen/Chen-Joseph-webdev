@@ -11,10 +11,9 @@
         }
         init();
 
-        function createTournament(user) {
-            var _tournament = {name: "hello", organizer: user._id};
+        function createTournament(user, tournament) {
             tournamentService
-                .createTournament(user._id, _tournament)
+                .createTournament(user._id, tournament)
                 .then(function () {
                     $location.url("/tournament/");
                 })

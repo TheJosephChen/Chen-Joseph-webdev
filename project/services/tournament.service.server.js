@@ -8,7 +8,7 @@ function createTournament(req, response) {
     var userId = req.params.userId;
     var tournament = req.body;
     tournamentModel
-        .createTournament(tournament)
+        .createTournament(userId, tournament)
         .then(function (tournament) {
             response.json(tournament);
         })
