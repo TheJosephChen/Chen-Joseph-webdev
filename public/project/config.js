@@ -40,6 +40,12 @@
                 controller: "deckSearchController",
                 controllerAs: "model"
             })
+            .when("/tournament/", {
+                templateUrl: "views/tournament/tournament-list.html"
+            })
+            .when("/tournament/create", {
+                templateUrl: "views/tournament/tournament-create.html"
+            })
 
 
     }
