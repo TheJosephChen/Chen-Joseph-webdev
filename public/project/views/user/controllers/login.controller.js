@@ -23,7 +23,6 @@
                     if (user === "0" || user === null) {
                         model.errorMessage = "User not found";
                     } else {
-                        $rootScope.currentUser = user;
                         $location.url("/");
                     }
 

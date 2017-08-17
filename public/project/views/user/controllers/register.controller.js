@@ -25,8 +25,11 @@
                 })
                 .then(function (response) {
                     var _user = response.data;
-                    $rootScope.currentUser = _user;
-                    $location.url("/");
+                    userService.findUserByUsernameAndPassword(_user.username, _user.password)
+                        .then(function () {
+                            $location.url("/");
+
+                        })
                 });
         }
     }
