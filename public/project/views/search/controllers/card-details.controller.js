@@ -3,7 +3,7 @@
         .module("duelystApp")
         .controller("cardDetailsController", cardDetailsController);
 
-    function cardDetailsController($routeParams, cardService) {
+    function cardDetailsController($routeParams, cardService, userService) {
         var model = this;
 
         model.cardName = $routeParams.cardName;
@@ -13,6 +13,7 @@
         model.createComment = createComment;
 
         function init() {
+            checkLogin();
             cardService
                 .getCardByCardName(model.cardName)
                 .then(getCardComments)
@@ -50,6 +51,17 @@
             init();
         }
 
+        function checkLogin() {
+            userService
+                .checkLogin()
+                .then(function (user) {
+                    if (user === "0") {
+                        model.loggedInUser = null;
+                    } else {
+                        model.loggedInUser = user;
+                    }
+                })
+        }
     }
 
 })();

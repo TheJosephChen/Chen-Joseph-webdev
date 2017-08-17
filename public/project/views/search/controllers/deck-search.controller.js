@@ -4,7 +4,7 @@
         .controller("deckSearchController", deckSearchController);
 
 
-    function deckSearchController(deckService) {
+    function deckSearchController(deckService, userService) {
         var model = this;
 
         model.deck = [];
@@ -12,7 +12,7 @@
 
 
         function init() {
-
+            checkLogin();
         }
         init();
 
@@ -34,5 +34,16 @@
 
         }
 
+        function checkLogin() {
+            userService
+                .checkLogin()
+                .then(function (user) {
+                    if (user === "0") {
+                        model.loggedInUser = null;
+                    } else {
+                        model.loggedInUser = user;
+                    }
+                })
+        }
     }
 })();

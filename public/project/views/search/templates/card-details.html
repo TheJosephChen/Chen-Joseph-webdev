@@ -5,13 +5,13 @@
     <a class="btn-link header-button pull-left" href="#!/" role="button">
         Home
     </a>
-    <a ng-show="!currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+    <a ng-show="!model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
         Login
     </a>
-    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
         Logout
     </a>
-    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/profile/{{currentUser._id}}" role="button">
+    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/profile/{{model.loggedInUser._id}}" role="button">
         Profile
     </a>
 </div>
@@ -22,7 +22,7 @@
     {{model.card.text}}
 
     <h2>Comments</h2>
-    <div ng-show="currentUser">
+    <div ng-show="model.loggedInUser">
         <div class="comment-section">
             <label for="comments">Comment</label>
             <input name="comments"
@@ -31,10 +31,10 @@
                    id="comments"
                    placeholder="say something about this card"
                    class="form-control"/>
-            <a class="btn btn-default btn-primary btn-block" ng-click="model.createComment(currentUser, model.comment)" role="button">Comment</a>
+            <a class="btn btn-default btn-primary btn-block" ng-click="model.createComment(model.loggedInUser, model.comment)" role="button">Comment</a>
         </div>
     </div>
-    <div ng-show="!currentUser">
+    <div ng-show="!model.loggedInUser">
         <h3>Log in to comment on this card.</h3>
     </div>
     <table class="table">

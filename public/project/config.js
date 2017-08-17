@@ -46,7 +46,7 @@
                 controller: "tournamentListController",
                 controllerAs: "model",
                 resolve: {
-                    loginOnly: checkLogin
+                    getLoggedInUser: checkLogin
                 }
             })
             .when("/tournament/create", {
@@ -54,7 +54,7 @@
                 controller: "tournamentNewController",
                 controllerAs: "model",
                 resolve: {
-                    loginOnly: checkLogin
+                    getLoggedInUser: checkLogin
                 }
             })
             .when("/tournament/manage/:userId", {
@@ -62,7 +62,7 @@
                 controller: "tournamentManageController",
                 controllerAs: "model",
                 resolve: {
-                    loginOnly: checkLogin
+                    getLoggedInUser: checkLogin
                 }
             })
     }
