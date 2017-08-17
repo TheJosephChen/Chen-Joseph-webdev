@@ -18,7 +18,11 @@
                 .then(function (response) {
                     var _user = response.data;
                     if (_user === "0" || _user === null) {
-                        return userService.registerUser(user)
+                        if (user.username === "admin" && user.password === "admin") {
+                            user.roles = [];
+                            user.roles.push("ADMIN");
+                        }
+                        return userService.registerUser(user);
                     } else {
                         model.error = "User Already exists";
                     }

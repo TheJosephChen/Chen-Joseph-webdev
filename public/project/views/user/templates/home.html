@@ -14,8 +14,7 @@
     <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/profile/{{model.loggedInUser.username}}" role="button">
         Profile
     </a>
-    <!--ng-show="model.loggedInUser && model.loggedInUser.roles.indexOf('ADMIN') !== -1"-->
-    <a class="btn-link header-button pull-right" href="#!/admin" role="button">
+    <a ng-show="model.loggedInUser && model.loggedInUser.roles.indexOf('ADMIN') !== -1" class="btn-link header-button pull-right" href="#!/admin" role="button">
         Admin
     </a>
 </div>
