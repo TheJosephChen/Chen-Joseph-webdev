@@ -1,7 +1,4 @@
 <div class="running-head">
-    <a class="btn-link header-button pull-left" href="#!/" role="button">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    </a>
     <div class="pull-left">
         Home
     </div>
@@ -35,14 +32,23 @@
         Submit a Deck
     </a>
     <h1>Tournaments</h1>
-    <a class="btn btn-primary btn-block" href="#!/tournament/create" role="button">
-        Create a tournament
-    </a>
-    <a class="btn btn-primary btn-block" href="#!/tournament/" role="button">
-        Find a tournament to join
-    </a>
-    <a class="btn btn-primary btn-block" href="#!/tournament/manage/{{currentUser._id}}" role="button">
-        Manage Tournaments you are Organizing
-    </a>
+    <div ng-show="currentUser">
+        <a class="btn btn-primary btn-block" href="#!/tournament/create" role="button">
+            Create a tournament
+        </a>
+        <a class="btn btn-primary btn-block" href="#!/tournament/" role="button">
+            Find a tournament to join
+        </a>
+        <div ng-show="currentUser.roles.indexOf('ORGANIZER') !== -1">
+            <a class="btn btn-primary btn-block" href="#!/tournament/manage/{{currentUser._id}}" role="button">
+                Manage Tournaments
+            </a>
+        </div>
+    </div>
+    <div ng-show="!currentUser">
+        <a class="btn btn-success btn-block" href="#!/login" role="button">
+            Log in to view and join tournaments
+        </a>
+    </div>
 
 </div>

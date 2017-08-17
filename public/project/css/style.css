@@ -5,7 +5,8 @@ input, textarea {
 .running-head {
     display: block;
     color: white;
-    background-color: #337ab7;
+    background-color: dodgerblue;
+    border-color: deepskyblue;
     margin-top: 0px;
     margin-bottom: 10px;
     padding: 15px 15px 15px 15px;
@@ -16,11 +17,29 @@ input, textarea {
 
 .header-button {
     border: none;
-    background-color: #337ab7;
+    background-color: dodgerblue;
     color: white;
     padding-right: 10px;
 }
 
 .comment-section {
     padding-top: 50px;
+}
+
+body {
+    background-color: lightgrey;
+}
+
+.btn-primary {
+    background-color: dodgerblue;
+    border-color: deepskyblue;
+}
+
+.btn-success {
+    background-color: limegreen;
+    border-color: lawngreen;
+}
+
+.btn {
+    margin-top: 5px;
 }
