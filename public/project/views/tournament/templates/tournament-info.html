@@ -18,25 +18,20 @@
 
 
 <div class="container-fluid scroll">
-    <h2>Tournament list</h2>
-    Click on a tournament's name to get more details and join
+    <h2>{{model.tournament.name}}</h2>
     <ul class="list-group">
         <li class="list-group-item active">
             <div class="row">
-                <div class="col-xs-4">Name</div>
+                <div class="col-xs-4">Participants</div>
                 <div class="col-xs-6 col-sm-3">Capacity</div>
                 <div class="col-sm-3 hidden-xs">Organized by</div>
             </div>
         </li>
-        <li ng-repeat="tournament in model.tournaments track by $index" class="list-group-item">
+        <li class="list-group-item">
             <div class="row">
-                <div class="col-xs-4">
-                    <a class="btn-link" href="#!/tournament/{{tournament._id}}/info" role="button">
-                        {{tournament.name}}
-                    </a>
-                </div>
-                <div class="col-xs-6 col-sm-3">{{tournament.participants.length}}/{{tournament.max}}</div>
-                <div class="col-sm-3 hidden-xs">{{tournament.organizer}}</div>
+                <div class="col-xs-4"></div>
+                <div class="col-xs-6 col-sm-3"></div>
+                <div class="col-sm-3 hidden-xs"></div>
             </div>
         </li>
     </ul>
