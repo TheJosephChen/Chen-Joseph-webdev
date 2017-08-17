@@ -24,7 +24,7 @@
             tournamentService
                 .deleteUserFromTournament(user.username, tournamentId)
                 .then(function () {
-                    $location.url("/tournament/" + tournamentId + "/info");
+                    $location.url("/tournament/" + tournamentId + "/edit");
                 })
         }
 
