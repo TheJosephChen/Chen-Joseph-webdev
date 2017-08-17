@@ -12,7 +12,7 @@
 
 
         function init() {
-
+            checkLogin();
         };
 
         init();
@@ -27,6 +27,18 @@
                         $location.url("/profile/" + user._id);
                     }
 
+                })
+        }
+
+        function checkLogin() {
+            userService
+                .checkLogin()
+                .then(function (user) {
+                    if (user === "0") {
+                        model.loggedInUser = null;
+                    } else {
+                        model.loggedInUser = user;
+                    }
                 })
         }
     }

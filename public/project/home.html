@@ -2,13 +2,13 @@
     <div class="pull-left">
         Home
     </div>
-    <a ng-show="!currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+    <a ng-show="!model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
         Login
     </a>
-    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
         Logout
     </a>
-    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/profile/{{currentUser._id}}" role="button">
+    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/profile/{{model.loggedInUser._id}}" role="button">
         Profile
     </a>
 </div>
@@ -32,20 +32,20 @@
         Submit a Deck
     </a>
     <h1>Tournaments</h1>
-    <div ng-show="currentUser">
+    <div ng-show="model.loggedInUser">
         <a class="btn btn-primary btn-block" href="#!/tournament/create" role="button">
             Create a tournament
         </a>
         <a class="btn btn-primary btn-block" href="#!/tournament/" role="button">
             Find a tournament to join
         </a>
-        <div ng-show="currentUser.roles.indexOf('ORGANIZER') !== -1">
-            <a class="btn btn-primary btn-block" href="#!/tournament/manage/{{currentUser._id}}" role="button">
+        <div ng-show="model.loggedInUser.roles.indexOf('ORGANIZER') !== -1">
+            <a class="btn btn-primary btn-block" href="#!/tournament/manage/{{model.loggedInUser._id}}" role="button">
                 Manage Tournaments
             </a>
         </div>
     </div>
-    <div ng-show="!currentUser">
+    <div ng-show="!model.loggedInUser">
         <a class="btn btn-success btn-block" href="#!/login" role="button">
             Log in to view and join tournaments
         </a>
