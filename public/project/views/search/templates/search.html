@@ -11,7 +11,7 @@
     <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
         Logout
     </a>
-    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/profile/{{model.loggedInUser._id}}" role="button">
+    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/profile/{{model.loggedInUser.username}}" role="button">
         Profile
     </a>
 </div>

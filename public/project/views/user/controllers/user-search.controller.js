@@ -24,7 +24,7 @@
                     if (user === "0" || user === null) {
                         model.errorMessage = "User not found";
                     } else {
-                        $location.url("/profile/" + user._id);
+                        $location.url("/profile/" + user.username);
                     }
 
                 })
