@@ -2,6 +2,14 @@ input, textarea {
     margin-bottom: 5px;
 }
 
+.container-fluid.scroll {
+    width: 100%;
+    position: absolute;
+    top: 65px;
+    bottom: 65px;
+    overflow-y: scroll;
+}
+
 .running-head {
     display: block;
     color: white;
@@ -42,4 +50,9 @@ body {
 
 .btn {
     margin-top: 5px;
+}
+.list-group-item.active {
+    background-color: dodgerblue !important;
+    border: none;
+
 }

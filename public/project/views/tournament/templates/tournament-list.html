@@ -17,13 +17,25 @@
 </div>
 
 
-<div class="container-fluid">
-    Tournament list
-    <table class="table">
-        <tr ng-repeat="tournament in model.tournaments track by $index">
-            <td>
-                {{tournament.name}}
-            </td>
-        </tr>
-    </table>
+<div class="container-fluid scroll">
+    <h2>Tournament list</h2>
+    Click on a tournament's name to get more details and join
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-4">Name</div>
+                <div class="col-xs-6 col-sm-3">Capacity</div>
+                <div class="col-sm-3 hidden-xs">Organized by</div>
+            </div>
+        </li>
+        <li ng-repeat="tournament in model.tournaments track by $index" class="list-group-item">
+            <div class="row">
+                <div class="col-xs-4">
+                    {{tournament.name}}
+                </div>
+                <div class="col-xs-6 col-sm-3">{{tournament.participants.length}}/{{tournament.max}}</div>
+                <div class="col-sm-3 hidden-xs">{{tournament.organizer}}</div>
+            </div>
+        </li>
+    </ul>
 </div>
