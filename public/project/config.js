@@ -71,7 +71,10 @@
             .when("/tournament/:tournamentId/join", {
                 templateUrl: "views/tournament/templates/tournament-join.html",
                 controller: "tournamentJoinController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    getLoggedInUser: checkLogin
+                }
             })
     }
 

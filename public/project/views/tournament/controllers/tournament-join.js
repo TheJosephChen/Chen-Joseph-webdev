@@ -4,11 +4,14 @@
         .controller("tournamentJoinController", tournamentJoinController);
 
 
-    function tournamentJoinController(deckService, userService) {
+    function tournamentJoinController($routeParams, deckService, userService, $location, getLoggedInUser, tournamentService) {
         var model = this;
 
+        model.tournamentId = $routeParams["tournamentId"];
+        model.loggedInUser = getLoggedInUser;
         model.deck = [];
         model.getDeckByCode = getDeckByCode;
+        model.joinTournament = joinTournament;
 
 
         function init() {
@@ -35,6 +38,26 @@
             var generalCard = {"name": deck.general, "count": 1};
             return generalCard;
 
+        }
+
+        function joinTournament(user, deckCode, tournamentId) {
+            var deck = {deckCode: deckCode};
+            tournamentService
+                .addUserToTournament(user.username, deck, tournamentId)
+                .then(function () {
+                    if (!isUserParticipantRole(user)) {
+                        user.roles.push("PARTICIPANT");
+                        userService
+                            .updateUser(user._id, user)
+                    }
+
+                    $location.url("/tournament/" + tournamentId + "/info");
+                })
+        }
+
+        function isUserParticipantRole(user) {
+            var roles = user.roles;
+            return (roles.indexOf("PARTICIPANT") !== -1);
         }
 
         function checkLogin() {

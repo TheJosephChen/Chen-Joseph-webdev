@@ -40,7 +40,7 @@
         </tr>
     </table>
     <div ng-show="model.validDeck">
-        <a class="btn btn-primary btn-block" href="#!/tournament/{{model.tournament._id}}" role="button">
+        <a class="btn btn-primary btn-block" ng-click="model.joinTournament(model.loggedInUser, model.deckCode, model.tournamentId)" role="button">
             Submit and Join
         </a>
     </div>
