@@ -3,13 +3,18 @@
         .module("duelystApp")
         .controller("tournamentInfoController", tournamentInfoController);
 
-    function tournamentInfoController(tournamentService, getLoggedInUser) {
+    function tournamentInfoController($routeParams, tournamentService, getLoggedInUser) {
         var model = this;
         model.tournament = {};
         model.loggedInUser = getLoggedInUser
+        var tournamentId = $routeParams["tournamentId"];
 
         function init() {
-            model.tournament = {id: 00000, name: "testTournament", max: 8, participants: []};
+            tournamentService
+                .getTournamentById(tournamentId)
+                .then(function (tournament) {
+                    model.tournament = tournament;
+                })
         }
         init();
 

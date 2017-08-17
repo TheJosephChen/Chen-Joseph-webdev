@@ -6,6 +6,7 @@ var userModel = require("../user/user.model.server");
 tournamentModel.createTournament = createTournament;
 tournamentModel.findAllTournaments = findAllTournaments;
 tournamentModel.findAllTournamentsForOrganizer = findAllTournamentsForOrganizer;
+tournamentModel.findTournamentById = findTournamentById;
 
 module.exports = tournamentModel;
 
@@ -29,4 +30,8 @@ function findAllTournamentsForOrganizer(username) {
         .then(function (user) {
             return tournamentModel.find({organizer: {_id: user._id, username: username}});
         })
+}
+
+function findTournamentById(tournamentId) {
+    return tournamentModel.findById(tournamentId)
 }
