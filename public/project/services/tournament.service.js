@@ -7,6 +7,7 @@
         this.createTournament = createTournament;
         this.getAllTournaments = getAllTournaments;
         this.getAllTournamentsForOrganizer = getAllTournamentsForOrganizer;
+        this.getAllTournamentsForParticipant = getAllTournamentsForParticipant;
         this.getTournamentById = getTournamentById;
         this.addUserToTournament = addUserToTournament;
         this.deleteUserFromTournament = deleteUserFromTournament;
@@ -32,6 +33,14 @@
 
         function getAllTournamentsForOrganizer(username) {
             var url = "/api/tournament/" + username + "/manage";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function getAllTournamentsForParticipant(username) {
+            var url = "/api/tournament/" + username;
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

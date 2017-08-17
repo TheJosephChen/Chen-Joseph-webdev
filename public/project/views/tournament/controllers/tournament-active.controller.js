@@ -11,7 +11,7 @@
 
         function init() {
             tournamentService
-                .getAllTournamentsForOrganizer(username)
+                .getAllTournamentsForParticipant(username)
                 .then(function (tournaments) {
                     model.tournaments = tournaments;
                 })

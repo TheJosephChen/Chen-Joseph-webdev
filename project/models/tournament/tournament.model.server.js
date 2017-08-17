@@ -6,6 +6,7 @@ var userModel = require("../user/user.model.server");
 tournamentModel.createTournament = createTournament;
 tournamentModel.findAllTournaments = findAllTournaments;
 tournamentModel.findAllTournamentsForOrganizer = findAllTournamentsForOrganizer;
+tournamentModel.findAllTournamentsForParticipant = findAllTournamentsForParticipant;
 tournamentModel.findTournamentById = findTournamentById;
 tournamentModel.addUserToTournament = addUserToTournament;
 tournamentModel.deleteUserFromTournament = deleteUserFromTournament;
@@ -64,6 +65,14 @@ function findAllTournamentsForOrganizer(username) {
         .findUserByUsername(username)
         .then(function (user) {
             return tournamentModel.find({organizer: {_id: user._id, username: username}});
+        })
+}
+
+function findAllTournamentsForParticipant(username) {
+    return userModel
+        .findUserByUsername(username)
+        .then(function (user) {
+            return tournamentModel.find({participants: {$elemMatch: {username: username}}});
         })
 }
 
