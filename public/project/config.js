@@ -19,7 +19,7 @@
                 controllerAs: "model"
             })
             .when("/admin", {
-                templateUrl: "views/user/templates/user-admin.view.html",
+                templateUrl: "views/user/templates/admin/user-admin.view.html",
                 controller: "userAdminController",
                 controllerAs: "model",
                 resolve: {
