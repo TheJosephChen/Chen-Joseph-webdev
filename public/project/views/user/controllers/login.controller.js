@@ -10,7 +10,7 @@
         model.login = login;
 
         function init() {
-            $rootScope.currentUser = null;
+            userService.logout();
 
         };
 

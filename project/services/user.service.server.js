@@ -10,14 +10,20 @@ passport.deserializeUser(deserializeUser);
 app.get("/api/user/:userId", getUserById);
 app.get("/api/user", findUser);
 app.post("/api/login", passport.authenticate('local'), login);
+app.post("/api/logout", logout);
 app.post("/api/user", registerUser);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
 app.put("/api/user", updateUserHistory);
 app.get("/api/checkLogin", checkLogin);
 
-function checkLogin(req, res) {
-    res.send(req.isAuthenticated() ? req.user : '0');
+function logout(req, response) {
+    req.logOut();
+    response.send(200);
+}
+
+function checkLogin(req, response) {
+    response.send(req.isAuthenticated() ? req.user : '0');
 }
 
 function localStrategy(username, password, done) {

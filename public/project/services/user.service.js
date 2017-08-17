@@ -13,7 +13,8 @@
             "updateUser": updateUser,
             "deleteUser": deleteUser,
             "rateUser": rateUser,
-            "checkLogin": checkLogin
+            "checkLogin": checkLogin,
+            "logout": logout
         };
         return api;
 
@@ -31,6 +32,11 @@
         function login(username, password) {
             var url = "/api/login";
             return $http.post(url, {username: username, password: password});
+        }
+
+        function logout() {
+            var url = "/api/logout";
+            return $http.post(url);
         }
 
         function findUserByUsername(username) {
