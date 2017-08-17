@@ -5,7 +5,7 @@
 
     function profileController($routeParams, $location, userService) {
         var model = this;
-        var userId = $routeParams["userId"];
+        var username = $routeParams["username"];
 
         model.updateUser = updateUser;
         model.unregisterUser = unregisterUser;
@@ -13,7 +13,7 @@
 
         function init() {
             checkLogin();
-            userService.findUserByID(userId)
+            userService.findUserByUsername(username)
                 .then(function (response) {
                     model.user = angular.copy(response.data);
                     model.origUser = angular.copy(model.user);

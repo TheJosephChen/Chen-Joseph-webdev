@@ -17,7 +17,7 @@
                 templateUrl: "views/user/templates/login.view.html",
                 controller: "loginController",
                 controllerAs: "model"})
-            .when("/profile/:userId", {
+            .when("/profile/:username", {
                 templateUrl: "views/user/templates/profile.view.html",
                 controller: "profileController",
                 controllerAs: "model"

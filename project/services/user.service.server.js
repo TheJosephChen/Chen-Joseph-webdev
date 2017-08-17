@@ -73,33 +73,17 @@ function getUserById(req, response) {
 }
 
 function findUser(req, response) {
-    var body = req.body;
-    var username = body.username;
-    var password = body.password;
-    if (username && password) {
-        userModel
-            .findUserByCredentials(username, password)
-            .then(function (user) {
-                response.json(user);
-                return;
-            }, function (err) {
-                response.sendStatus(404).send(err);
-                return;
-            })
-        return;
-    } else {
-        userModel
-            .findUserByUsername(username)
-            .then(function (user) {
-                response.json(user);
-                return;
-            }, function (err) {
-                response.sendStatus(404).send(err);
-                return;
-            })
-        return;
-    }
-    response.send("0");
+    var username = req.query.username;
+    userModel
+        .findUserByUsername(username)
+        .then(function (user) {
+            response.json(user);
+            return;
+        }, function (err) {
+            response.send("0");
+            return;
+        })
+
 }
 
 function updateUser(req, response) {
