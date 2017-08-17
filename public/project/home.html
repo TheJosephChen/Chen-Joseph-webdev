@@ -2,7 +2,7 @@
     <div class="pull-left">
         Home
     </div>
-    <a ng-show="!model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+    <a ng-show="!model.loggedInUser" class="btn-link header-button pull-right" onclick="window.history.back()" role="button">
         Login
     </a>
     <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
