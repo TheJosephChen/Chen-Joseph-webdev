@@ -1,13 +1,42 @@
 var app = require("../../express");
 var userModel = require("../models/user/user.model.server");
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
 
 // html handlers
 app.get("/api/user/:userId", getUserById);
 app.get("/api/user", findUser);
+app.post("/api/login", passport.authenticate('local'), login);
 app.post("/api/user", registerUser);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
 app.put("/api/user", updateUserHistory)
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials(username, password)
+        .then(function(user) {
+                if (!user) {
+                    return done(null, false);
+                }
+                return done(null, user);
+            },
+            function(err) {
+                if (err) {
+                    return done(err);
+                }
+            }
+        );
+}
+
+function login(req, response) {
+    var user = req.user;
+    response.json(user);
+
+}
 
 function registerUser(req, response) {
     var user = req.body;
@@ -16,9 +45,6 @@ function registerUser(req, response) {
         .then(function (user) {
             response.json(user);
         })
-    // user._id = (new Date()).getTime() + "";
-    // users.push(user);
-    // response.send(user);
 }
 
 function deleteUser(req, response) {
@@ -31,17 +57,6 @@ function deleteUser(req, response) {
         }, function (err) {
             response.sendStatus(404).send(err);
         });
-
-    // var userIndex;
-    // for (var u in users) {
-    //     if (users[u]._id === userId) {
-    //         userIndex = u;
-    //         users.splice(userIndex, 1);
-    //         response.sendStatus(200);
-    //         return;
-    //     }
-    // }
-    // response.sendStatus(404);
 }
 
 function getUserById(req, response) {
@@ -50,16 +65,12 @@ function getUserById(req, response) {
         .then(function (user) {
             response.json(user);
         })
-    // for (var u in users) {
-    //     if (users[u]._id === req.params.userId) {
-    //         response.send(users[u]);
-    //     }
-    // }
 }
 
 function findUser(req, response) {
-    var username = req.query.username;
-    var password = req.query.password;
+    var body = req.body;
+    var username = body.username;
+    var password = body.password;
     if (username && password) {
         userModel
             .findUserByCredentials(username, password)
@@ -71,13 +82,6 @@ function findUser(req, response) {
                 return;
             })
         return;
-        // for (var u in users) {
-        //     var _user = users[u];
-        //     if (_user.username === username && _user.password === password) {
-        //         response.send(_user);
-        //         return;
-        //     }
-        // }
     } else {
         userModel
             .findUserByUsername(username)
@@ -89,14 +93,6 @@ function findUser(req, response) {
                 return;
             })
         return;
-        //     for (var u in users) {
-        //         var _user = users[u];
-        //         if (_user.username === username) {
-        //             response.send(_user);
-        //             return;
-        //         }
-        //     }
-        // }
     }
     response.send("0");
 }
@@ -112,15 +108,6 @@ function updateUser(req, response) {
         }, function (err) {
            response.sendStatus(404).send(err);
         });
-    //
-    // for (var u in users) {
-    //     if (users[u]._id === userId) {
-    //         users[u] = user;
-    //         response.send(user);
-    //         return;
-    //     }
-    // }
-    // response.sendStatus(404);
 }
 
 function updateUserHistory(req, response) {
@@ -131,4 +118,21 @@ function updateUserHistory(req, response) {
         .then(function (status) {
             response.json(status);
         })
+}
+
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    userModel
+        .findUserById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
 }
