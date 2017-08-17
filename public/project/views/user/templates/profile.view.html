@@ -5,13 +5,13 @@
     <a class="btn-link header-button pull-left" href="#!/" role="button">
         Home
     </a>
-    <a ng-show="!currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+    <a ng-show="!model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
         Login
     </a>
-    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
         Logout
     </a>
-    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/profile/{{currentUser._id}}" role="button">
+    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/profile/{{model.loggedInUser._id}}" role="button">
         Profile
     </a>
 </div>
@@ -35,7 +35,7 @@
                id="tournOrg"
                placeholder="0-10"
                class="form-control"/>
-        <a class="btn btn-default btn-primary btn-block" ng-click="model.rateUser(currentUser, model.user, model.rating)" role="button">Rate</a>
+        <a class="btn btn-default btn-primary btn-block" ng-click="model.rateUser(model.loggedInUser, model.user, model.rating)" role="button">Rate</a>
 
 
         <b>Recent History:</b>

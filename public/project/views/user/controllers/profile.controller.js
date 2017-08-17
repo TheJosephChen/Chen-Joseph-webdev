@@ -12,6 +12,7 @@
         model.rateUser = rateUser;
 
         function init() {
+            checkLogin();
             userService.findUserByID(userId)
                 .then(function (response) {
                     model.user = angular.copy(response.data);
@@ -38,6 +39,18 @@
             var ratedMessage = ratedUser.username + " has received a rating of " + rating + " from " + ratingUser.username;
             userService.rateUser(ratedUser._id, ratedMessage);
             init();
+        }
+
+        function checkLogin() {
+            userService
+                .checkLogin()
+                .then(function (user) {
+                    if (user === "0") {
+                        model.loggedInUser = null;
+                    } else {
+                        model.loggedInUser = user;
+                    }
+                })
         }
     }
 })();
