@@ -5,13 +5,13 @@
     <a class="btn-link header-button pull-left" href="#!/" role="button">
         Home
     </a>
-    <a ng-show="!currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+    <a ng-show="!model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
         Login
     </a>
-    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/login" role="button">
+    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/login" role="button">
         Logout
     </a>
-    <a ng-show="currentUser" class="btn-link header-button pull-right" href="#!/profile/{{currentUser._id}}" role="button">
+    <a ng-show="model.loggedInUser" class="btn-link header-button pull-right" href="#!/profile/{{model.loggedInUser._id}}" role="button">
         Profile
     </a>
 </div>
@@ -35,7 +35,7 @@
            placeholder="0-32"
            class="form-control"/>
 
-    <button class="btn btn-primary btn-block" ng-click="model.createTournament(currentUser, model.tournament)">
+    <button class="btn btn-primary btn-block" ng-click="model.createTournament(model.loggedInUser, model.tournament)">
         Create tournament
     </button>
 </div>

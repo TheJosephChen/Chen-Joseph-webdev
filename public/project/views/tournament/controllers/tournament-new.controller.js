@@ -3,8 +3,9 @@
         .module("duelystApp")
         .controller("tournamentNewController", tournamentNewController);
 
-    function tournamentNewController($routeParams, tournamentService, $location, userService) {
+    function tournamentNewController($routeParams, tournamentService, $location, userService, getLoggedInUser) {
         var model = this;
+        model.loggedInUser = getLoggedInUser;
 
         model.createTournament = createTournament;
         function init() {
