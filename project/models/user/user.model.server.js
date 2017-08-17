@@ -8,6 +8,7 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
 userModel.deleteUser = deleteUser;
 userModel.addToHistory = addToHistory;
+userModel.getAllUsers = getAllUsers;
 module.exports = userModel;
 
 function deleteUser(userId) {
@@ -48,4 +49,8 @@ function addToHistory(userId, message) {
             user.history.unshift(message);
             return user.save();
         } );
+}
+
+function getAllUsers() {
+    return userModel.find();
 }

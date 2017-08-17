@@ -14,7 +14,8 @@
             "deleteUser": deleteUser,
             "rateUser": rateUser,
             "checkLogin": checkLogin,
-            "logout": logout
+            "logout": logout,
+            "getAllUsers": getAllUsers
         };
         return api;
 
@@ -61,6 +62,14 @@
         function rateUser(ratingId, message) {
             var url = "/api/user?userId=" + ratingId + "&message=" + message;
             return $http.put(url);
+        }
+
+        function getAllUsers() {
+            var url = "/api/users";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });;
         }
 
     }

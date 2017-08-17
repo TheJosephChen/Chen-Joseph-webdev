@@ -6,11 +6,25 @@
     function userAdminController(userService) {
         var model = this;
 
+        model.deleteUser = deleteUser;
 
         function init() {
             checkLogin();
+            userService
+                .getAllUsers()
+                .then(function (users) {
+                    model.users = users;
+                })
         };
         init();
+
+        function deleteUser(userId) {
+            userService
+                .deleteUser(userId)
+                .then(function () {
+                    init();
+                })
+        }
 
         function checkLogin() {
             userService

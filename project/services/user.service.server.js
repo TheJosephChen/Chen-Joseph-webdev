@@ -16,6 +16,7 @@ app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
 app.put("/api/user", updateUserHistory);
 app.get("/api/checkLogin", checkLogin);
+app.get("/api/users", getAllUsers);
 
 function logout(req, response) {
     req.logOut();
@@ -112,6 +113,14 @@ function updateUserHistory(req, response) {
         .addToHistory(userId, message)
         .then(function (status) {
             response.json(status);
+        })
+}
+
+function getAllUsers(req, response) {
+    userModel
+        .getAllUsers()
+        .then(function (users) {
+            response.json(users);
         })
 }
 
