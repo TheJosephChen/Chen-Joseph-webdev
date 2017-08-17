@@ -37,7 +37,7 @@
                 controllerAs: "model"
             })
             .when("/deck", {
-                templateUrl: "views/search/templates/deck.html",
+                templateUrl: "views/tournament/templates/deck.html",
                 controller: "deckSearchController",
                 controllerAs: "model"
             })
