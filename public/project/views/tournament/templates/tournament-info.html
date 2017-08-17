@@ -34,7 +34,11 @@
             <li ng-repeat="participant in model.tournament.participants track by $index" class="list-group-item">
                 <div class="row">
                     <div class="col-xs-6">{{participant.username}}</div>
-                    <div class="col-xs-6">{{participant.deck}}</div>
+                    <div class="col-xs-6">
+                        <a href="#!/deck/{{participant.username}}/{{participant.deck}}" role="button">
+                            {{participant.username}}'s deck
+                        </a>
+                    </div>
                 </div>
             </li>
         </ul>

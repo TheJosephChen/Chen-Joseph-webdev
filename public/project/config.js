@@ -16,7 +16,8 @@
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.html",
                 controller: "loginController",
-                controllerAs: "model"})
+                controllerAs: "model"
+            })
             .when("/profile/:username", {
                 templateUrl: "views/user/templates/profile.view.html",
                 controller: "profileController",
@@ -29,6 +30,11 @@
             .when("/search", {
                 templateUrl: "views/search/templates/search.html",
                 controller: "cardSearchController",
+                controllerAs: "model"
+            })
+            .when("/deck/:username/:deckCode", {
+                templateUrl: "views/search/templates/deck-review.html",
+                controller: "deckReviewController",
                 controllerAs: "model"
             })
             .when("/details/:cardName", {
