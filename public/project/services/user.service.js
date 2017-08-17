@@ -45,7 +45,7 @@
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
-                });;
+                });
         }
 
         function findUserByID(userId) {
@@ -74,6 +74,5 @@
                     return response.data;
                 });
         }
-
     }
 })();

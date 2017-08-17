@@ -7,6 +7,7 @@
         var model = this;
 
         model.username = $routeParams["username"];
+        model.roles = ["ORGANIZER", "PARTICIPANT", "ADMIN"];
 
         function init() {
             checkLogin();
@@ -14,6 +15,8 @@
                 .findUserByUsername(model.username)
                 .then(function (user) {
                     model.user = user;
+                    model.userRoles = model.user.roles;
+
                 })
         };
         init();
