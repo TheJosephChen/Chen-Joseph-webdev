@@ -51,7 +51,7 @@
                             .updateUser(user._id, user)
                     }
 
-                    $location.url("/tournament/" + tournamentId + "/info");
+                    $location.url("/tournament/active/" + model.loggedInUser.username);
                 })
         }
 

@@ -40,7 +40,7 @@
         }
 
         function getAllTournamentsForParticipant(username) {
-            var url = "/api/tournament/" + username;
+            var url = "/api/tournament/" + username + "/active";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

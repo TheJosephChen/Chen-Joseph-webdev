@@ -4,7 +4,7 @@ var tournamentModel = require("../models/tournament/tournament.model.server");
 app.post("/api/tournament/user/:username", createTournament);
 app.get("/api/tournament", getAllTournaments);
 app.get("/api/tournament/:username/manage", getAllTournamentsForOrganizer);
-app.get("/api/tournament/:username", getAllTournamentsForParticipant);
+app.get("/api/tournament/:username/active", getAllTournamentsForParticipant);
 app.get("/api/tournament/:tournamentId", getTournamentById);
 app.put("/api/tournament/:tournamentId/join", addUserToTournament);
 app.delete("/api/tournament/:tournamentId/user", deleteUserFromTournament);

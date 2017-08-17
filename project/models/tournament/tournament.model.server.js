@@ -69,11 +69,7 @@ function findAllTournamentsForOrganizer(username) {
 }
 
 function findAllTournamentsForParticipant(username) {
-    return userModel
-        .findUserByUsername(username)
-        .then(function (user) {
-            return tournamentModel.find({participants: {$elemMatch: {username: username}}});
-        })
+    return tournamentModel.find({participants: {$elemMatch: {username: username}}});
 }
 
 function findTournamentById(tournamentId) {
