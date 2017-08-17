@@ -8,8 +8,20 @@ tournamentModel.findAllTournaments = findAllTournaments;
 tournamentModel.findAllTournamentsForOrganizer = findAllTournamentsForOrganizer;
 tournamentModel.findTournamentById = findTournamentById;
 tournamentModel.addUserToTournament = addUserToTournament;
+tournamentModel.deleteUserFromTournament = deleteUserFromTournament;;
 
 module.exports = tournamentModel;
+
+
+function deleteUserFromTournament(username, tournamentId) {
+    return tournamentModel
+        .findTournamentById(tournamentId)
+        .then(function (tournament) {
+            var index = tournament.participants.indexOf(username);
+            tournament.participants.splice(index, 1);
+            return tournament.save();
+        })
+}
 
 function addUserToTournament(username, deck, tournamentId) {
     return userModel

@@ -3,21 +3,30 @@
         .module("duelystApp")
         .controller("tournamentEditController", tournamentEditController);
 
-    function tournamentEditController($routeParams, tournamentService, getLoggedInUser) {
+    function tournamentEditController($routeParams, tournamentService, getLoggedInUser, $location) {
         var model = this;
         model.tournament = {};
         model.loggedInUser = getLoggedInUser
-        var tournamentId = $routeParams["tournamentId"];
+        model.tournamentId = $routeParams["tournamentId"];
+        model.deleteUserFromTournament = deleteUserFromTournament;
 
         function init() {
             tournamentService
-                .getTournamentById(tournamentId)
+                .getTournamentById(model.tournamentId)
                 .then(function (tournament) {
                     model.tournament = tournament;
                     model.openings = model.tournament.max - model.tournament.participants.length;
                 })
         }
         init();
+
+        function deleteUserFromTournament(user, tournamentId) {
+            tournamentService
+                .deleteUserFromTournament(user.username, tournamentId)
+                .then(function () {
+                    $location.url("/tournament/" + tournamentId + "/info");
+                })
+        }
 
     }
 

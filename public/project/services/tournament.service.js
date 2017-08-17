@@ -9,6 +9,7 @@
         this.getAllTournamentsForOrganizer = getAllTournamentsForOrganizer;
         this.getTournamentById = getTournamentById;
         this.addUserToTournament = addUserToTournament;
+        this.deleteUserFromTournament = deleteUserFromTournament;
 
         function createTournament(username, tournament) {
             var url = "/api/tournament/user/" + username;
@@ -42,6 +43,12 @@
         function addUserToTournament(username, deck, tournamentId) {
             var url = "/api/tournament/" + tournamentId + "/join?username=" + username;
             return $http.put(url, deck);
+
+        }
+
+        function deleteUserFromTournament(username, tournamentId) {
+            var url = "/api/tournament/" + tournamentId + "/delete?username=" + username;
+            return $http.delete(url);
 
         }
     }

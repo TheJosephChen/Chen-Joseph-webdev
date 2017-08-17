@@ -2,10 +2,21 @@ var app = require("../../express");
 var tournamentModel = require("../models/tournament/tournament.model.server");
 
 app.post("/api/tournament/user/:username", createTournament);
-app.get("/api/tournament", getAllTournaments)
-app.get("/api/tournament/:username/manage", getAllTournamentsForOrganizer)
-app.get("/api/tournament/:tournamentId", getTournamentById)
-app.put("/api/tournament/:tournamentId/join", addUserToTournament)
+app.get("/api/tournament", getAllTournaments);
+app.get("/api/tournament/:username/manage", getAllTournamentsForOrganizer);
+app.get("/api/tournament/:tournamentId", getTournamentById);
+app.put("/api/tournament/:tournamentId/join", addUserToTournament);
+app.delete("/api/tournament/:tournamentId/delete", deleteUserFromTournament);
+
+function deleteUserFromTournament(req, response) {
+    var tournamentId = req.params.tournamentId;
+    var username = req.query.username;
+    tournamentModel
+        .deleteUserFromTournament(username, tournamentId)
+        .then(function (tournament) {
+            response.json(tournament);
+        })
+}
 
 function addUserToTournament(req, response) {
     var tournamentId = req.params.tournamentId;
