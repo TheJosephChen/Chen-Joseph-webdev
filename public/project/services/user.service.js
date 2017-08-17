@@ -42,7 +42,10 @@
 
         function findUserByUsername(username) {
             var url = "/api/user?username=" + username;
-            return $http.get(url);
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });;
         }
 
         function findUserByID(userId) {
@@ -69,7 +72,7 @@
             return $http.get(url)
                 .then(function (response) {
                     return response.data;
-                });;
+                });
         }
 
     }

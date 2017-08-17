@@ -26,6 +26,14 @@
                     getLoggedInUser: checkLogin
                 }
             })
+            .when("/admin/edit/:username", {
+                templateUrl: "views/user/templates/admin/edit-admin.view.html",
+                controller: "editAdminController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedInUser: checkLogin
+                }
+            })
             .when("/profile/:username", {
                 templateUrl: "views/user/templates/profile.view.html",
                 controller: "profileController",
