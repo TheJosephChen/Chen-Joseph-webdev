@@ -14,7 +14,7 @@
                 .getTournamentById(tournamentId)
                 .then(function (tournament) {
                     model.tournament = tournament;
-                    model.tournament.participants = [{_id: 22, username: "a", deck: "b"},{_id: 23, username: "c", deck: "d"}]
+                    model.openings = model.tournament.max - model.tournament.participants.length;
                 })
         }
         init();

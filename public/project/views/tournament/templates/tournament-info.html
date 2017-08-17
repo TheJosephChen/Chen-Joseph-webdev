@@ -20,19 +20,33 @@
 <div class="container-fluid scroll">
     <h2>{{model.tournament.name}}</h2>
     <h3>Organized by {{model.tournament.organizer.username}}</h3>
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-6">Participant</div>
-                <div class="col-xs-6">Deck</div>
-            </div>
-        </li>
-        <li ng-repeat="participant in model.tournament.participants track by $index" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-6">{{participant.username}}</div>
-                <div class="col-xs-6">{{participant.deck}}</div>
-            </div>
-        </li>
-    </ul>
-    <h3>Capacity: {{model.tournament.participants.length}}/{{model.tournament.max}}</h3>
+
+    <h3>Openings: {{model.openings}}/{{model.tournament.max}}</h3>
+
+    <div ng-show="model.openings != model.tournament.max">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                <div class="row">
+                    <div class="col-xs-6">Participant</div>
+                    <div class="col-xs-6">Deck</div>
+                </div>
+            </li>
+            <li ng-repeat="participant in model.tournament.participants track by $index" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-6">{{participant.username}}</div>
+                    <div class="col-xs-6">{{participant.deck}}</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-show="model.openings <= 0">
+        <h3>This tournament is currently full.</h3>
+    </div>
+
+    <div ng-show="model.openings > 0">
+        <a class="btn btn-primary btn-block" href="#!/tournament/" role="button">
+            Join
+        </a>
+    </div>
 </div>

@@ -6,11 +6,12 @@ input, textarea {
     width: 100%;
     position: absolute;
     top: 65px;
-    bottom: 65px;
+    bottom: 0px;
     overflow-y: scroll;
 }
 
 .running-head {
+    position: absolute;
     display: block;
     color: white;
     background-color: dodgerblue;
