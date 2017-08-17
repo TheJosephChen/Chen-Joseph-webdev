@@ -20,22 +20,27 @@
     <div class="container-fluid scroll scroll-no-foot">
         <h1>{{model.user.username}}'s Profile</h1>
 
-        <!--<label for="tournComp">Rate {{model.user.username}} as a tournament competitor</label>
-        <input name="tournComp"
-               type="number"
-               id="tournComp"
-               placeholder="0-10"
-               class="form-control"/>-->
         <h1>IGN: {{model.user.ign}}</h1>
 
-        <label for="tournOrg">Rate {{model.user.username}} as a tournament organizer</label>
-        <input name="tournOrg"
-               ng-model="model.rating"
-               type="number"
-               id="tournOrg"
-               placeholder="0-10"
-               class="form-control"/>
-        <a class="btn btn-default btn-primary btn-block" ng-click="model.rateUser(model.loggedInUser, model.user, model.rating)" role="button">Rate</a>
+        <div ng-show="model.user.username === model.loggedInUser.username">
+            <label for="editIGN">Change your in-game name</label>
+            <input name="editIGN"
+                   ng-model="model.user.ign"
+                   id="editIGN"
+                   class="form-control"/>
+            <a class="btn btn-default btn-primary btn-block" ng-click="model.updateUser(model.user)" role="button">Change name</a>
+        </div>
+
+        <div ng-show="model.user.username !== model.loggedInUser.username && model.loggedInUser">
+            <label for="tournOrg">Rate {{model.user.username}} as a tournament organizer</label>
+            <input name="tournOrg"
+                   ng-model="model.rating"
+                   type="number"
+                   id="tournOrg"
+                   placeholder="0-10"
+                   class="form-control"/>
+            <a class="btn btn-default btn-primary btn-block" ng-click="model.rateUser(model.loggedInUser, model.user, model.rating)" role="button">Rate</a>
+        </div>
 
 
         <b>Recent History:</b>
