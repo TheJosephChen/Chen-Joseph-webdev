@@ -6,7 +6,8 @@
     function tournamentListController(tournamentService, getLoggedInUser) {
         var model = this;
         model.tournaments = [];
-        model.loggedInUser = getLoggedInUser
+        model.loggedInUser = getLoggedInUser;
+        model.deleteTournament = deleteTournament;
 
         function init() {
             tournamentService
@@ -16,6 +17,15 @@
                 })
         }
         init();
+
+        // for admins only
+        function deleteTournament(tournamentId) {
+            tournamentService
+                .deleteTournament(tournamentId)
+                .then(function () {
+                    init();
+                })
+        }
 
     }
 

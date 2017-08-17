@@ -36,9 +36,14 @@
                     </a>
                 </div>
                 <div class="col-xs-6 col-sm-3">{{tournament.max - tournament.participants.length}}/{{tournament.max}}</div>
-                <div class="col-sm-3 hidden-xs">
+                <div class="col-sm-2 hidden-xs">
                     <a href="#!/profile/{{tournament.organizer.username}}" role="button">
                         {{tournament.organizer.username}}
+                    </a>
+                </div>
+                <div class="col-sm-1 hidden-xs pull-right" ng-show="model.loggedInUser.roles.indexOf('ADMIN') !== -1">
+                    <a ng-click="model.deleteTournament(tournament._id)" role="button">
+                        Delete
                     </a>
                 </div>
             </div>
