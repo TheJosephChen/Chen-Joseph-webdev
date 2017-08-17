@@ -43,6 +43,11 @@
                 Manage Tournaments
             </a>
         </div>
+        <div ng-show="model.loggedInUser.roles.indexOf('PARTICIPANT') !== -1">
+            <a class="btn btn-primary btn-block" href="#!/tournament/active/{{model.loggedInUser.username}}" role="button">
+                Your Active Tournaments
+            </a>
+        </div>
     </div>
     <div ng-show="!model.loggedInUser">
         <a class="btn btn-success btn-block" href="#!/login" role="button">
