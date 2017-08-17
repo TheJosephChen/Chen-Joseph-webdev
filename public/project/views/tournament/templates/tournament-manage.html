@@ -29,7 +29,9 @@
         <li ng-repeat="tournament in model.tournaments track by $index" class="list-group-item">
             <div class="row">
                 <div class="col-xs-6">
-                    {{tournament.name}}
+                    <a href="#!/tournament/{{tournament._id}}/edit" role="button">
+                        {{tournament.name}}
+                    </a>
                 </div>
                 <div class="col-xs-6">{{tournament.participants.length}}/{{tournament.max}}</div>
             </div>

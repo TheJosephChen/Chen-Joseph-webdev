@@ -82,6 +82,14 @@
                     getLoggedInUser: checkLogin
                 }
             })
+            .when("/tournament/:tournamentId/edit", {
+                templateUrl: "views/tournament/templates/tournament-edit.html",
+                controller: "tournamentEditController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedInUser: checkLogin
+                }
+            })
     }
 
     // resolve this function to protect any login-only pages
