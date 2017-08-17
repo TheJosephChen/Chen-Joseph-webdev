@@ -13,7 +13,12 @@ app.post("/api/login", passport.authenticate('local'), login);
 app.post("/api/user", registerUser);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
-app.put("/api/user", updateUserHistory)
+app.put("/api/user", updateUserHistory);
+app.get("/api/checkLogin", checkLogin);
+
+function checkLogin(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
+}
 
 function localStrategy(username, password, done) {
     userModel

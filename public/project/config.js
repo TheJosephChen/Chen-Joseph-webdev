@@ -20,7 +20,8 @@
             .when("/profile/:userId", {
                 templateUrl: "views/user/templates/profile.view.html",
                 controller: "profileController",
-                controllerAs: "model"})
+                controllerAs: "model"
+            })
             .when("/register", {
                 templateUrl: "views/user/templates/register.view.html",
                 controller: "registerController",
@@ -43,19 +44,41 @@
             .when("/tournament/", {
                 templateUrl: "views/tournament/templates/tournament-list.html",
                 controller: "tournamentListController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loginOnly: checkLogin
+                }
             })
             .when("/tournament/create", {
                 templateUrl: "views/tournament/templates/tournament-create.html",
                 controller: "tournamentNewController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loginOnly: checkLogin
+                }
             })
             .when("/tournament/manage/:userId", {
                 templateUrl: "views/tournament/templates/tournament-manage.html",
                 controller: "tournamentManageController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    loginOnly: checkLogin
+                }
             })
+    }
 
-
+    // resolve this function to protect any login-only pages
+    function checkLogin(userService, $q) {
+        var deferred = $q.defer();
+        userService
+            .checkLogin()
+            .then(function (user) {
+                if (user === "0") {
+                    deferred.reject();
+                } else {
+                    deferred.resolve(user);
+                }
+            })
+        return deferred.promise;
     }
 })();

@@ -12,10 +12,17 @@
             "registerUser": registerUser,
             "updateUser": updateUser,
             "deleteUser": deleteUser,
-            "rateUser": rateUser
+            "rateUser": rateUser,
+            "checkLogin": checkLogin
         };
         return api;
 
+        function checkLogin() {
+            return $http.get("/api/checkLogin")
+                .then(function (response) {
+                    return response.data;
+                });
+        }
         function registerUser(user) {
             var url = "/api/user";
             return $http.post(url, user);
