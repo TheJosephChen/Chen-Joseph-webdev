@@ -7,11 +7,11 @@
         var model = this;
         model.tournaments = [];
         model.loggedInUser = getLoggedInUser;
-        var userId = $routeParams.userId;
+        var username = $routeParams.username;
 
         function init() {
             tournamentService
-                .getAllTournamentsForOrganizer(userId)
+                .getAllTournamentsForOrganizer(username)
                 .then(function (tournaments) {
                     model.tournaments = tournaments;
                 })

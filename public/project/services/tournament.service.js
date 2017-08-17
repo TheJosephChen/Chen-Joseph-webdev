@@ -21,8 +21,8 @@
                 });
         }
 
-        function getAllTournamentsForOrganizer(userId) {
-            var url = "/api/tournament/" + userId + "/manage";
+        function getAllTournamentsForOrganizer(username) {
+            var url = "/api/tournament/" + username + "/manage";
             return $http.get(url)
                 .then(function (response) {
                     return response.data;

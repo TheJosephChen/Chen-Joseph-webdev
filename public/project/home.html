@@ -40,7 +40,7 @@
             Find a tournament to join
         </a>
         <div ng-show="model.loggedInUser.roles.indexOf('ORGANIZER') !== -1">
-            <a class="btn btn-primary btn-block" href="#!/tournament/manage/{{model.loggedInUser._id}}" role="button">
+            <a class="btn btn-primary btn-block" href="#!/tournament/manage/{{model.loggedInUser.username}}" role="button">
                 Manage Tournaments
             </a>
         </div>

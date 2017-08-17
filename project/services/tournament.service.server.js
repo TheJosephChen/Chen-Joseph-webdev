@@ -3,7 +3,7 @@ var tournamentModel = require("../models/tournament/tournament.model.server");
 
 app.post("/api/tournament/user/:username", createTournament);
 app.get("/api/tournament", getAllTournaments)
-app.get("/api/tournament/:userId/manage", getAllTournamentsForOrganizer)
+app.get("/api/tournament/:username/manage", getAllTournamentsForOrganizer)
 
 function createTournament(req, response) {
     var username = req.params.username;
@@ -26,9 +26,9 @@ function getAllTournaments(req, response) {
 }
 
 function getAllTournamentsForOrganizer(req, response) {
-    var userId = req.params.userId;
+    var username = req.params.username;
     tournamentModel
-        .findAllTournamentsForOrganizer(userId)
+        .findAllTournamentsForOrganizer(username)
         .then(function (tournaments) {
             response.json(tournaments);
         })

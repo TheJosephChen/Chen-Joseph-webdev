@@ -17,6 +17,6 @@ function findAllTournaments() {
     return tournamentModel.find();
 }
 
-function findAllTournamentsForOrganizer(userId) {
-    return tournamentModel.find({organizer: userId});
+function findAllTournamentsForOrganizer(username) {
+    return tournamentModel.find({organizer: username});
 }

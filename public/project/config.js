@@ -57,7 +57,7 @@
                     getLoggedInUser: checkLogin
                 }
             })
-            .when("/tournament/manage/:userId", {
+            .when("/tournament/manage/:username", {
                 templateUrl: "views/tournament/templates/tournament-manage.html",
                 controller: "tournamentManageController",
                 controllerAs: "model",
