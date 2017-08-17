@@ -5,9 +5,11 @@ var passport = require('passport');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
+var localSecret = 'this is the secret';
+//localSecret = process.env.SESSION_SECRET;
 app.use(cookieParser());
 app.use(session({
-    secret: 'this is the secret',
+    secret: localSecret,
     resave: true,
     saveUninitialized: true
 }));
