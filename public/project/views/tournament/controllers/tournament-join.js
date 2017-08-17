@@ -19,7 +19,10 @@
         function getDeckByCode(deckCode) {
             deckService
                 .getDeckByCode(deckCode)
-                .then(renderDeck);
+                .then(renderDeck)
+                .then(function () {
+                    model.validDeck = true;
+                });
         }
 
         function renderDeck(deck) {
