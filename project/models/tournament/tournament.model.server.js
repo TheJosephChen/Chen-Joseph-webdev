@@ -8,10 +8,18 @@ tournamentModel.findAllTournaments = findAllTournaments;
 tournamentModel.findAllTournamentsForOrganizer = findAllTournamentsForOrganizer;
 tournamentModel.findTournamentById = findTournamentById;
 tournamentModel.addUserToTournament = addUserToTournament;
-tournamentModel.deleteUserFromTournament = deleteUserFromTournament;;
+tournamentModel.deleteUserFromTournament = deleteUserFromTournament;
+tournamentModel.deleteTournament = deleteTournament;
 
 module.exports = tournamentModel;
 
+function deleteTournament(tournamentId) {
+    return tournamentModel
+        .remove({_id: tournamentId})
+        .then(function (status) {
+            return status;
+        });
+}
 
 function deleteUserFromTournament(username, tournamentId) {
     return tournamentModel

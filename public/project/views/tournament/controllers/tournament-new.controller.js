@@ -17,13 +17,10 @@
                 .createTournament(user.username, tournament)
                 .then(function () {
                     if (!isUserOrganizerRole(user)) {
-                        console.log(user);
                         user.roles.push("ORGANIZER");
                         userService
                             .updateUser(user._id, user)
-                        console.log(user);
                     }
-
                     $location.url("/tournament/");
                 })
         }

@@ -10,6 +10,12 @@
         this.getTournamentById = getTournamentById;
         this.addUserToTournament = addUserToTournament;
         this.deleteUserFromTournament = deleteUserFromTournament;
+        this.deleteTournament = deleteTournament;
+
+        function deleteTournament(tournamentId) {
+            var url = "/api/tournament/" + tournamentId + "/delete";
+            return $http.delete(url);
+        }
 
         function createTournament(username, tournament) {
             var url = "/api/tournament/user/" + username;
@@ -47,9 +53,8 @@
         }
 
         function deleteUserFromTournament(username, tournamentId) {
-            var url = "/api/tournament/" + tournamentId + "/delete?username=" + username;
+            var url = "/api/tournament/" + tournamentId + "/user?username=" + username;
             return $http.delete(url);
-
         }
     }
 

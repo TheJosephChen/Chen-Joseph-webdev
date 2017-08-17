@@ -6,7 +6,19 @@ app.get("/api/tournament", getAllTournaments);
 app.get("/api/tournament/:username/manage", getAllTournamentsForOrganizer);
 app.get("/api/tournament/:tournamentId", getTournamentById);
 app.put("/api/tournament/:tournamentId/join", addUserToTournament);
-app.delete("/api/tournament/:tournamentId/delete", deleteUserFromTournament);
+app.delete("/api/tournament/:tournamentId/user", deleteUserFromTournament);
+app.delete("/api/tournament/:tournamentId/delete", deleteTournament);
+
+function deleteTournament(req, response) {
+    var tournamentId = req.params.tournamentId;
+    tournamentModel
+        .deleteTournament(tournamentId)
+        .then(function (status) {
+            response.json(status);
+        }, function (err) {
+            response.sendStatus(404).send(err);
+        });
+}
 
 function deleteUserFromTournament(req, response) {
     var tournamentId = req.params.tournamentId;

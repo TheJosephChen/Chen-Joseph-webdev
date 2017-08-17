@@ -9,6 +9,7 @@
         model.loggedInUser = getLoggedInUser
         model.tournamentId = $routeParams["tournamentId"];
         model.deleteUserFromTournament = deleteUserFromTournament;
+        model.deleteTournament = deleteTournament;
 
         function init() {
             tournamentService
@@ -25,6 +26,14 @@
                 .deleteUserFromTournament(user.username, tournamentId)
                 .then(function () {
                     $location.url("/tournament/" + tournamentId + "/edit");
+                })
+        }
+
+        function deleteTournament(tournamentId) {
+            tournamentService
+                .deleteTournament(tournamentId)
+                .then(function () {
+                    $location.url("/tournament/");
                 })
         }
 
