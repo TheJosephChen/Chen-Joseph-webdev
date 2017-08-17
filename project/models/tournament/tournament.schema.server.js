@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var tournamentSchema = mongoose.Schema({
     name: String,
-    organizer: {type: mongoose.Schema.Types.ObjectId, ref: "UserModel"},
+    organizer: String,
     participants: [{participant: {type: mongoose.Schema.Types.ObjectId, ref: "UserModel"}, deck: String}],
     max: Number
 }, {collection: "tournament"});

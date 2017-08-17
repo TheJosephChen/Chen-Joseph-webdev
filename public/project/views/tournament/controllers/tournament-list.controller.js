@@ -3,7 +3,7 @@
         .module("duelystApp")
         .controller("tournamentListController", tournamentListController);
 
-    function tournamentListController($routeParams, tournamentService, getLoggedInUser) {
+    function tournamentListController(tournamentService, getLoggedInUser) {
         var model = this;
         model.tournaments = [];
         model.loggedInUser = getLoggedInUser

@@ -14,7 +14,7 @@
 
         function createTournament(user, tournament) {
             tournamentService
-                .createTournament(user._id, tournament)
+                .createTournament(user.username, tournament)
                 .then(function () {
                     if (!isUserOrganizerRole(user)) {
                         console.log(user);

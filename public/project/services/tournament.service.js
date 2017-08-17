@@ -8,8 +8,8 @@
         this.getAllTournaments = getAllTournaments;
         this.getAllTournamentsForOrganizer = getAllTournamentsForOrganizer;
 
-        function createTournament(userId, tournament) {
-            var url = "/api/tournament/user/" + userId;
+        function createTournament(username, tournament) {
+            var url = "/api/tournament/user/" + username;
             return $http.post(url, tournament);
         }
 

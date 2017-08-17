@@ -8,8 +8,8 @@ tournamentModel.findAllTournamentsForOrganizer = findAllTournamentsForOrganizer;
 
 module.exports = tournamentModel;
 
-function createTournament(userId, tournament) {
-    tournament.organizer = userId;
+function createTournament(username, tournament) {
+    tournament.organizer = username;
     return tournamentModel.create(tournament);
 }
 
