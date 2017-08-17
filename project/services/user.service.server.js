@@ -25,7 +25,7 @@ function localStrategy(username, password, done) {
         .findUserByCredentials(username, password)
         .then(function(user) {
                 if (!user) {
-                    return done(null, false);
+                    return done(null, "0");
                 }
                 return done(null, user);
             },
