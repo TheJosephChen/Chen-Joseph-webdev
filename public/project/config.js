@@ -9,7 +9,7 @@
 
         $routeProvider
             .when("/", {
-                templateUrl: "home.html",
+                templateUrl: "views/user/templates/home.html",
                 controller: "userSearchController",
                 controllerAs: "model"
             })
@@ -17,6 +17,14 @@
                 templateUrl: "views/user/templates/login.view.html",
                 controller: "loginController",
                 controllerAs: "model"
+            })
+            .when("/admin", {
+                templateUrl: "views/user/templates/user-admin.view.html",
+                controller: "userAdminController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedInUser: checkLogin
+                }
             })
             .when("/profile/:username", {
                 templateUrl: "views/user/templates/profile.view.html",
