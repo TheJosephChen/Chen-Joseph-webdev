@@ -1,10 +1,10 @@
 (function () {
     angular
         .module("duelystApp")
-        .controller("deckSearchController", deckSearchController);
+        .controller("tournamentJoinController", tournamentJoinController);
 
 
-    function deckSearchController(deckService, userService) {
+    function tournamentJoinController(deckService, userService) {
         var model = this;
 
         model.deck = [];

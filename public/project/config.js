@@ -36,11 +36,6 @@
                 controller: "cardDetailsController",
                 controllerAs: "model"
             })
-            .when("/deck", {
-                templateUrl: "views/tournament/templates/deck.html",
-                controller: "deckSearchController",
-                controllerAs: "model"
-            })
             .when("/tournament/", {
                 templateUrl: "views/tournament/templates/tournament-list.html",
                 controller: "tournamentListController",
@@ -72,6 +67,11 @@
                 resolve: {
                     getLoggedInUser: checkLogin
                 }
+            })
+            .when("/tournament/:tournamentId/join", {
+                templateUrl: "views/tournament/templates/tournament-join.html",
+                controller: "tournamentJoinController",
+                controllerAs: "model"
             })
     }
 
