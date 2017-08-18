@@ -19,8 +19,7 @@
 
         function findUserByName(username) {
             userService.findUserByUsername(username)
-                .then(function (response) {
-                    user = response.data;
+                .then(function (user) {
                     if (user === "0" || user === null) {
                         model.errorMessage = "User not found";
                     } else {
