@@ -20,7 +20,7 @@
     <div class="container-fluid scroll scroll-no-foot">
         <h1>{{model.user.username}}'s Profile</h1>
 
-        <h1>IGN: {{model.user.ign}}</h1>
+        <h1>ign: {{model.origUser.ign}}</h1>
 
         <div ng-show="model.user.username === model.loggedInUser.username">
             <label for="editIGN">Change your in-game name</label>

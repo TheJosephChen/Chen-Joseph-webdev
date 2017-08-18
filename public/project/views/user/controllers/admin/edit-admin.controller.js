@@ -8,18 +8,25 @@
 
         model.username = $routeParams["username"];
         model.roles = ["ORGANIZER", "PARTICIPANT", "ADMIN"];
+        model.updateIGN = updateIGN;
 
         function init() {
             checkLogin();
             userService
                 .findUserByUsername(model.username)
                 .then(function (user) {
-                    model.user = user;
+                    model.user = angular.copy(user);
+                    model.origUser = angular.copy(model.user);
                     model.userRoles = model.user.roles;
 
                 })
         };
         init();
+
+        function updateIGN(user) {
+            userService.updateUser(user._id, user);
+            angular.copy(model.user, model.origUser);
+        };
 
         function checkLogin() {
             userService

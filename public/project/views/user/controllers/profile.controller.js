@@ -14,8 +14,8 @@
         function init() {
             checkLogin();
             userService.findUserByUsername(username)
-                .then(function (response) {
-                    model.user = angular.copy(response.data);
+                .then(function (user) {
+                    model.user = angular.copy(user);
                     model.origUser = angular.copy(model.user);
                 
             });
