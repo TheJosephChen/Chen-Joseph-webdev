@@ -15,8 +15,7 @@
 
         function registerUser(user) {
             userService.findUserByUsername(user.username)
-                .then(function (response) {
-                    var _user = response.data;
+                .then(function (_user) {
                     if (_user === "0" || _user === null) {
                         if (user.username === "admin" && user.password === "admin") {
                             user.roles = [];
