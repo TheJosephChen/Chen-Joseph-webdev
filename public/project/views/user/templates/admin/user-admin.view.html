@@ -17,32 +17,34 @@
 </div>
 
 <div class="container-fluid scroll">
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-4">Name</div>
-                <div class="col-xs-6 col-sm-3">Roles</div>
-            </div>
-        </li>
-        <li ng-repeat="user in model.users track by $index" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-4">
-                    <a class="btn-link" href="#!/profile/{{user.username}}" role="button">
-                        {{user.username}}
-                    </a>
+    <div ng-show="model.loggedInUser && model.loggedInUser.roles.indexOf('ADMIN') !== -1">
+        <ul class="list-group">
+            <li class="list-group-item active">
+                <div class="row">
+                    <div class="col-xs-4">Name</div>
+                    <div class="col-xs-6 col-sm-3">Roles</div>
                 </div>
-                <div class="col-xs-6">{{user.roles}}</div>
-                <div class="col-sm-1 hidden-xs pull-right">
-                    <a ng-click="model.deleteUser(user._id)" role="button">
-                        Delete
-                    </a>
+            </li>
+            <li ng-repeat="user in model.users track by $index" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <a class="btn-link" href="#!/profile/{{user.username}}" role="button">
+                            {{user.username}}
+                        </a>
+                    </div>
+                    <div class="col-xs-6">{{user.roles}}</div>
+                    <div class="col-sm-1 hidden-xs pull-right">
+                        <a ng-click="model.deleteUser(user._id)" role="button">
+                            Delete
+                        </a>
+                    </div>
+                    <div class="col-sm-1 hidden-xs pull-right">
+                        <a href="#!/admin/edit/{{user.username}}" role="button">
+                            Edit
+                        </a>
+                    </div>
                 </div>
-                <div class="col-sm-1 hidden-xs pull-right">
-                    <a href="#!/admin/edit/{{user.username}}" role="button">
-                        Edit
-                    </a>
-                </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>

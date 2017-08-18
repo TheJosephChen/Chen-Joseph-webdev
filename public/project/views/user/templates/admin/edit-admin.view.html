@@ -17,40 +17,41 @@
 </div>
 
 <div class="container-fluid scroll">
-    <h1>Edit {{model.user.username}}</h1>
-    <h2>ign: {{model.origUser.ign}}</h2>
-    <ul class="list-group">
-        <li class="list-group-item active">
-            <div class="row">
-                <div class="col-xs-6">Role</div>
-            </div>
-        </li>
-        <li ng-repeat="role in model.roles track by $index" class="list-group-item">
-            <div class="row">
-                <div class="col-xs-6">
-                    <a class="btn-link" href="#!/tournament/{{role}}/info" role="button">
-                        {{role}}
-                    </a>
+    <div ng-show="model.loggedInUser && model.loggedInUser.roles.indexOf('ADMIN') !== -1">
+        <h1>Edit {{model.user.username}}</h1>
+        <h2>ign: {{model.origUser.ign}}</h2>
+        <ul class="list-group">
+            <li class="list-group-item active">
+                <div class="row">
+                    <div class="col-xs-6">Role</div>
                 </div>
-                <div class="col-xs-3" ng-show="model.userRoles.indexOf(role) == -1">
-                    <a ng-click="model.assignRole(role, model.user)" role="button">
-                        Assign
-                    </a>
+            </li>
+            <li ng-repeat="role in model.roles track by $index" class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a class="btn-link" href="#!/tournament/{{role}}/info" role="button">
+                            {{role}}
+                        </a>
+                    </div>
+                    <div class="col-xs-3" ng-show="model.userRoles.indexOf(role) == -1">
+                        <a ng-click="model.assignRole(role, model.user)" role="button">
+                            Assign
+                        </a>
+                    </div>
+                    <div class="col-xs-3 pull-right" ng-show="model.userRoles.indexOf(role) != -1">
+                        <a ng-click="model.deleteRole(role, model.user)" role="button">
+                            Delete
+                        </a>
+                    </div>
                 </div>
-                <div class="col-xs-3 pull-right" ng-show="model.userRoles.indexOf(role) != -1">
-                    <a ng-click="model.deleteRole(role, model.user)" role="button">
-                        Delete
-                    </a>
-                </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
 
-    <label for="editIGN">Change in-game name</label>
-    <input name="editIGN"
-           ng-model="model.user.ign"
-           id="editIGN"
-           class="form-control"/>
-    <a class="btn btn-default btn-primary btn-block" ng-click="model.updateIGN(model.user)" role="button">Change name</a>
-
+        <label for="editIGN">Change in-game name</label>
+        <input name="editIGN"
+               ng-model="model.user.ign"
+               id="editIGN"
+               class="form-control"/>
+        <a class="btn btn-default btn-primary btn-block" ng-click="model.updateIGN(model.user)" role="button">Change name</a>
+    </div>
 </div>
