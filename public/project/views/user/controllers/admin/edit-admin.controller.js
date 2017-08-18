@@ -9,6 +9,8 @@
         model.username = $routeParams["username"];
         model.roles = ["ORGANIZER", "PARTICIPANT", "ADMIN"];
         model.updateIGN = updateIGN;
+        model.assignRole = assignRole;
+        model.deleteRole = deleteRole;
 
         function init() {
             checkLogin();
@@ -22,6 +24,21 @@
                 })
         };
         init();
+
+        function assignRole(role, user) {
+            user.roles.push(role);
+            userService.updateUser(user._id, user);
+            angular.copy(model.user, model.origUser);
+            init();
+        };
+
+        function deleteRole(role, user) {
+            var index = user.roles.indexOf(role);
+            user.roles.splice(index, 1);
+            userService.updateUser(user._id, user);
+            angular.copy(model.user, model.origUser);
+            init();
+        };
 
         function updateIGN(user) {
             userService.updateUser(user._id, user);

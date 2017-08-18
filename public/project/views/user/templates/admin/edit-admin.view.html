@@ -33,12 +33,12 @@
                     </a>
                 </div>
                 <div class="col-xs-3" ng-show="model.userRoles.indexOf(role) == -1">
-                    <a href="#!/profile/" role="button">
+                    <a ng-click="model.assignRole(role, model.user)" role="button">
                         Assign
                     </a>
                 </div>
                 <div class="col-xs-3 pull-right" ng-show="model.userRoles.indexOf(role) != -1">
-                    <a href="#!/profile/" role="button">
+                    <a ng-click="model.deleteRole(role, model.user)" role="button">
                         Delete
                     </a>
                 </div>
