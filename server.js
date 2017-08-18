@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 
 var localSecret = 'this is the secret';
-//localSecret = process.env.SESSION_SECRET;
+localSecret = process.env.SESSION_SECRET;
 app.use(cookieParser());
 app.use(session({
     secret: localSecret,
