@@ -15,18 +15,24 @@
 
         function registerUser(user) {
             userService.findUserByUsername(user.username)
-                .then(function (response) {
-                    var _user = response.data;
+                .then(function (_user) {
                     if (_user === "0" || _user === null) {
-                        return userService.registerUser(user)
+                        if (user.username === "admin" && user.password === "admin") {
+                            user.roles = [];
+                            user.roles.push("ADMIN");
+                        }
+                        return userService.registerUser(user);
                     } else {
                         model.error = "User Already exists";
                     }
                 })
                 .then(function (response) {
                     var _user = response.data;
-                    $rootScope.currentUser = _user;
-                    $location.url("/");
+                    userService.findUserByUsernameAndPassword(_user.username, _user.password)
+                        .then(function () {
+                            $location.url("/");
+
+                        })
                 });
         }
     }

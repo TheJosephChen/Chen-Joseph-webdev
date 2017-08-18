@@ -16,21 +16,25 @@
     </a>
 </div>
 
+
 <div class="container-fluid scroll">
-    <h2>Search Card by Name</h2>
-    <input placeholder="Card Name ex. sister"
-           ng-model="cardName"
-           class="form-control"/>
-    <button class="btn btn-primary btn-block" ng-click="model.searchCardByName(cardName)">
-        Search
-    </button>
-    <table class="table">
-        <tr ng-repeat="card in model.cards">
-            <td>
-                <a href="#!/details/{{card.value}}">
-                    {{card.value}}
-                </a>
-            </td>
-        </tr>
-    </table>
+    <h2>Tournaments you are organizing</h2>
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-6">Name</div>
+                <div class="col-xs-6">Openings</div>
+            </div>
+        </li>
+        <li ng-repeat="tournament in model.tournaments track by $index" class="list-group-item">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="#!/tournament/{{tournament._id}}/edit" role="button">
+                        {{tournament.name}}
+                    </a>
+                </div>
+                <div class="col-xs-6">{{tournament.max - tournament.participants.length}}/{{tournament.max}}</div>
+            </div>
+        </li>
+    </ul>
 </div>

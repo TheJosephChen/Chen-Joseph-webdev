@@ -17,20 +17,18 @@
 </div>
 
 <div class="container-fluid scroll">
-    <h2>Search Card by Name</h2>
-    <input placeholder="Card Name ex. sister"
-           ng-model="cardName"
-           class="form-control"/>
-    <button class="btn btn-primary btn-block" ng-click="model.searchCardByName(cardName)">
-        Search
-    </button>
+    <h1>{{model.username}}'s Deck</h1>
     <table class="table">
-        <tr ng-repeat="card in model.cards">
+        <tr ng-repeat="card in model.deck">
             <td>
-                <a href="#!/details/{{card.value}}">
-                    {{card.value}}
+                <a href="#!/details/{{card.name}}">
+                    {{card.name}} x{{card.count}}
                 </a>
             </td>
         </tr>
     </table>
+
+    <button class="btn btn-primary btn-block" onclick="window.history.back()">
+        Back
+    </button>
 </div>

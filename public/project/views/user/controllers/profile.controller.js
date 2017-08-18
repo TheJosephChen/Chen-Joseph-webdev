@@ -5,16 +5,17 @@
 
     function profileController($routeParams, $location, userService) {
         var model = this;
-        var userId = $routeParams["userId"];
+        var username = $routeParams["username"];
 
         model.updateUser = updateUser;
         model.unregisterUser = unregisterUser;
         model.rateUser = rateUser;
 
         function init() {
-            userService.findUserByID(userId)
-                .then(function (response) {
-                    model.user = angular.copy(response.data);
+            checkLogin();
+            userService.findUserByUsername(username)
+                .then(function (user) {
+                    model.user = angular.copy(user);
                     model.origUser = angular.copy(model.user);
                 
             });
@@ -37,6 +38,19 @@
             userService.rateUser(ratingUser._id, ratingMessage);
             var ratedMessage = ratedUser.username + " has received a rating of " + rating + " from " + ratingUser.username;
             userService.rateUser(ratedUser._id, ratedMessage);
+            init();
+        }
+
+        function checkLogin() {
+            userService
+                .checkLogin()
+                .then(function (user) {
+                    if (user === "0") {
+                        model.loggedInUser = null;
+                    } else {
+                        model.loggedInUser = user;
+                    }
+                })
         }
     }
 })();

@@ -1,9 +1,25 @@
+<div class="running-head">
+    <a class="btn-link header-button pull-left" href="#!/login" role="button">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    </a>
+    <a class="btn-link header-button pull-left" href="#!/" role="button">
+        Home
+    </a>
+</div>
+
 <div class="container-fluid">
 
     <div ng-show="model.error" class="alert alert-danger">
         {{model.error}}
     </div>
     <h1 class="entrance">Register</h1>
+
+    <label for="ign">In-game name</label>
+    <input name="ign"
+           ng-model="user.ign"
+           id="ign"
+           placeholder="in-game name"
+           class="form-control"/>
 
     <label for="username">Username</label>
     <input name="username"

@@ -7,7 +7,6 @@ function searchQuery(req, res) {
     var card = req.params.cardName;
     request('https://duelyststats.info/scripts/carddata/get.php?cardName=' + card, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-            console.log(body);
             res.send(body);
         }
     });

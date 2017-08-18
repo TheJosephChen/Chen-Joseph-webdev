@@ -6,29 +6,46 @@
     function userService($http) {
 
         var api = {
-            "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
+            "findUserByUsernameAndPassword": login,
             "findUserByUsername": findUserByUsername,
             "findUserByID": findUserByID,
             "registerUser": registerUser,
             "updateUser": updateUser,
             "deleteUser": deleteUser,
-            "rateUser": rateUser
+            "rateUser": rateUser,
+            "checkLogin": checkLogin,
+            "logout": logout,
+            "getAllUsers": getAllUsers
         };
         return api;
 
+        function checkLogin() {
+            return $http.get("/api/checkLogin")
+                .then(function (response) {
+                    return response.data;
+                });
+        }
         function registerUser(user) {
             var url = "/api/user";
             return $http.post(url, user);
         }
 
-        function findUserByUsernameAndPassword(username, password) {
-            var url = "/api/user?username=" + username + "&password=" + password;
-            return $http.get(url);
+        function login(username, password) {
+            var url = "/api/login";
+            return $http.post(url, {username: username, password: password});
+        }
+
+        function logout() {
+            var url = "/api/logout";
+            return $http.post(url);
         }
 
         function findUserByUsername(username) {
             var url = "/api/user?username=" + username;
-            return $http.get(url);
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function findUserByID(userId) {
@@ -50,5 +67,12 @@
             return $http.put(url);
         }
 
+        function getAllUsers() {
+            var url = "/api/users";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
     }
 })();

@@ -3,7 +3,7 @@
         .module("duelystApp")
         .controller("cardSearchController", cardSearchController);
 
-    function cardSearchController(cardService, $location) {
+    function cardSearchController(cardService, $location, userService) {
         var model = this;
         var _cards = [];
 
@@ -11,7 +11,7 @@
         model.navToDeck = navToDeck;
 
         function init() {
-
+            checkLogin();
         }
         init();
 
@@ -78,6 +78,18 @@
             var cardName = parse[0];
             _cards.push({"value": cardName});
             model.cards = _cards;
+        }
+
+        function checkLogin() {
+            userService
+                .checkLogin()
+                .then(function (user) {
+                    if (user === "0") {
+                        model.loggedInUser = null;
+                    } else {
+                        model.loggedInUser = user;
+                    }
+                })
         }
     }
 

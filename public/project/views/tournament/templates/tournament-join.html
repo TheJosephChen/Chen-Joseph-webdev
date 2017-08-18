@@ -17,20 +17,31 @@
 </div>
 
 <div class="container-fluid scroll">
-    <h2>Search Card by Name</h2>
-    <input placeholder="Card Name ex. sister"
-           ng-model="cardName"
+    <h2>Build Deck by Code</h2>
+    <p>Enter your deck code and press 'Build'. Review the cards and if they are correct, click 'Submit and Join' below</p>
+
+    <input placeholder="Insert your deck code here"
+           ng-model="model.deckCode"
+           type="text"
            class="form-control"/>
-    <button class="btn btn-primary btn-block" ng-click="model.searchCardByName(cardName)">
-        Search
+    <button class="btn btn-primary btn-block" ng-click="model.getDeckByCode(model.deckCode)">
+        Build
     </button>
+    example: MTo0MTgsMzo0MDUsMzo0MTIsMzo0MTcsMzoxMDAyMCwzOjEwOTgxLDM6MTEwODYsMzoxOTA1MiwzOjIwMTEyLDM6MjAxMTYsMzoyMDEyMiwzOjIwMTI1LDM6MjAyMjUsMzoyMDIzNA==
+
+
     <table class="table">
-        <tr ng-repeat="card in model.cards">
+        <tr ng-repeat="card in model.deck">
             <td>
-                <a href="#!/details/{{card.value}}">
-                    {{card.value}}
+                <a href="#!/details/{{card.name}}">
+                    {{card.name}} x{{card.count}}
                 </a>
             </td>
         </tr>
     </table>
+    <div ng-show="model.validDeck">
+        <a class="btn btn-primary btn-block" ng-click="model.joinTournament(model.loggedInUser, model.deckCode, model.tournamentId)" role="button">
+            Submit and Join
+        </a>
+    </div>
 </div>
