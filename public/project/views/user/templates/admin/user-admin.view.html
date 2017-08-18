@@ -22,7 +22,12 @@
             <li class="list-group-item active">
                 <div class="row">
                     <div class="col-xs-4">Name</div>
-                    <div class="col-xs-6 col-sm-3">Roles</div>
+                    <div class="col-xs-6">Roles</div>
+                    <div class="col-xs-2">
+                        <a class="btn-link plus pull-right" href="#!/admin/create" role="button">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </a>
+                    </div>
                 </div>
             </li>
             <li ng-repeat="user in model.users track by $index" class="list-group-item">

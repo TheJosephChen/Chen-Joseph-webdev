@@ -1,15 +1,18 @@
 (function () {
     angular
         .module("duelystApp")
-        .controller("registerController", registerController);
+        .controller("createAdminController", createAdminController);
 
 
-    function registerController($location, userService) {
+    function createAdminController($location, userService, getLoggedInUser) {
         var model = this;
+        model.loggedInUser = getLoggedInUser;
 
         model.registerUser = registerUser;
+
         function init() {
 
+            checkLogin();
         }
         init();
 
@@ -26,14 +29,21 @@
                         model.error = "User Already exists";
                     }
                 })
-                .then(function (response) {
-                    var _user = response.data;
-                    userService.findUserByUsernameAndPassword(_user.username, _user.password)
-                        .then(function () {
-                            $location.url("/");
-
-                        })
+                .then(function () {
+                    $location.url("/admin/");
                 });
+        }
+
+        function checkLogin() {
+            userService
+                .checkLogin()
+                .then(function (user) {
+                    if (user === "0") {
+                        model.loggedInUser = null;
+                    } else {
+                        model.loggedInUser = user;
+                    }
+                })
         }
     }
 })();

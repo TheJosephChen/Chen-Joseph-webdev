@@ -34,6 +34,14 @@
                     getLoggedInUser: checkLogin
                 }
             })
+            .when("/admin/create", {
+                templateUrl: "views/user/templates/admin/create-admin.view.html",
+                controller: "createAdminController",
+                controllerAs: "model",
+                resolve: {
+                    getLoggedInUser: checkLogin
+                }
+            })
             .when("/profile/:username", {
                 templateUrl: "views/user/templates/profile.view.html",
                 controller: "profileController",
